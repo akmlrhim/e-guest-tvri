@@ -1,0 +1,48 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class AuthController extends Controller
+{
+	public function index()
+	{
+		return view('admin.auth.login');
+	}
+
+	public function login(Request $request)
+	{
+		$request->validate([
+			'email' => 'required|email',
+			'password' => 'required',
+		], [
+			'email.required' => 'Email harus diisi',
+			'email.email' => 'Email tidak valid',
+			'password.required' => 'Password harus diisi'
+		]);
+
+		$credentials = [
+			'email' => $request->email,
+			'password' => $request->password,
+		];
+
+		if (Auth::attempt($credentials)) {
+			return redirect()->route('dashboard');
+		}
+
+		toast('Email atau password salah', 'error');
+		return redirect()->back();
+	}
+
+	public function logout(Request $request)
+	{
+		Auth::logout();
+		$request->session()->invalidate();
+		$request->session()->regenerateToken();
+
+		toast('Anda telah berhasil logout', 'info');
+		return redirect()->route('login');
+	}
+}
