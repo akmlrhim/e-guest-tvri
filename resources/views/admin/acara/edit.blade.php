@@ -7,7 +7,7 @@
       {{-- data  --}}
       <div class="card">
         <div class="card-body">
-          <form action="{{ route('event.update', $event->id) }}" method="post">
+          <form action="{{ route('program.update', $program->id) }}" method="post">
             @csrf
             @method('PUT')
 
@@ -17,7 +17,7 @@
 								is-invalid
 							@enderror"
                 id="name" name="program_name" placeholder="Masukkan Nama Acara" autofocus
-                value="{{ old('program_name', $event->program_name) }}" autocomplete="off">
+                value="{{ old('program_name', $program->program_name) }}" autocomplete="off">
               @error('program_name')
                 <small class="invalid-feedback d-block">{{ $message }}</small>
               @enderror
@@ -32,7 +32,7 @@
 											is-invalid
 										@enderror"
                       type="checkbox" name="days[]" id="{{ strtolower($day) }}" value="{{ $day }}"
-                      {{ in_array($day, explode(',', $event->days)) ? 'checked' : '' }}>
+                      {{ in_array($day, explode(',', $program->days)) ? 'checked' : '' }}>
                     <label class="form-check-label" for="{{ strtolower($day) }}">{{ $day }}</label>
                   </div>
                 @endforeach
@@ -49,7 +49,7 @@
 									is-invalid
 								@enderror"
                   id="start_time" name="start_time" placeholder="Jam Mulai"
-                  value="{{ old('start_time', $event->start_time) }}" onfocus="this.showPicker()">
+                  value="{{ old('start_time', $program->start_time) }}" onfocus="this.showPicker()">
                 <small class="form-text text-muted">Jam Mulai</small>
                 @error('start_time')
                   <small class="invalid-feedback d-block">{{ $message }}</small>
@@ -61,7 +61,7 @@
 									is-invalid
 								@enderror"
                   id="end_time" name="end_time" placeholder="Jam Berakhir"
-                  value="{{ old('end_time', $event->end_time) }}" onfocus="this.showPicker()">
+                  value="{{ old('end_time', $program->end_time) }}" onfocus="this.showPicker()">
                 <small class="form-text text-muted">Jam Berakhir</small>
                 @error('end_time')
                   <small class="invalid-feedback d-block">{{ $message }}</small>
@@ -70,7 +70,7 @@
             </div>
 
             <div class="mt-3">
-              <a class="btn btn-secondary" href="{{ route('event') }}">
+              <a class="btn btn-secondary" href="{{ route('program') }}">
                 Kembali
               </a>
               <button type="submit" class="btn btn-primary">Simpan</button>

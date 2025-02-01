@@ -37,7 +37,7 @@
   </div>
 
   {{-- modal konfirmasi hapus  --}}
-  @foreach ($event as $row)
+  @foreach ($program as $row)
     <div class="modal fade" id="modal<?= $row->id ?>" data-backdrop="static" data-keyboard="false" tabindex="-1"
       aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
@@ -51,7 +51,7 @@
           <div class="modal-body text-center">
             <i class="fas fa-info-circle text-danger mb-4" style="font-size: 70px;"></i>
             <p>Apakah anda yakin untuk menghapus <b>{{ $row->program_name }}</b> ?</p>
-            <form action="{{ route('event.destroy', $row->id) }}" method="POST">
+            <form action="{{ route('program.destroy', $row->id) }}" method="POST">
               @csrf
               @method('DELETE')
               <div class="modal-footer justify-content-center">
@@ -74,7 +74,7 @@
       autoWidth: false,
       responsive: true,
       serverSide: true,
-      ajax: "{{ route('event.show') }}",
+      ajax: "{{ route('program.show') }}",
       columns: [{
           data: 'DT_RowIndex',
           name: 'DT_RowIndex',
