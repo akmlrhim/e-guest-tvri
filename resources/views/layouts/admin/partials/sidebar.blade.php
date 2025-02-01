@@ -20,7 +20,7 @@
       </li>
 
       <li class="nav-item">
-        <a href="{{ route('event') }}" class="nav-link">
+        <a href="{{ route('program') }}" class="nav-link">
           <i class="nav-icon fas fa-calendar-check"></i>
           <p>Acara</p>
         </a>

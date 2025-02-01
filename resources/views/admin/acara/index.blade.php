@@ -6,7 +6,7 @@
 
       {{-- button tambah data  --}}
       <div class="d-flex justify-content-start mb-3">
-        <a class="btn btn-primary" href="{{ route('event.create') }}">
+        <a class="btn btn-primary" href="{{ route('program.create') }}">
           Tambah Data Acara
         </a>
       </div>

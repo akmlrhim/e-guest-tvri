@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
 use App\Models\Program;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -15,7 +14,7 @@ class ProgramController extends Controller
 	public function index()
 	{
 		$data['title'] = 'Acara';
-		$data['event'] = Program::get();
+		$data['program'] = Program::get();
 		return view('admin.acara.index', $data);
 	}
 
@@ -34,7 +33,7 @@ class ProgramController extends Controller
 	public function store(Request $request)
 	{
 		$request->validate([
-			'program_name' => 'required|unique:events,program_name,except,id',
+			'program_name' => 'required|unique:programs,program_name,except,id',
 			'days' => 'required',
 			'start_time' => 'required',
 			'end_time' => 'required',
@@ -56,7 +55,7 @@ class ProgramController extends Controller
 		]);
 
 		toast('Acara baru telah ditambahkan', 'success');
-		return redirect()->route('event');
+		return redirect()->route('program');
 	}
 
 	/**
@@ -72,7 +71,7 @@ class ProgramController extends Controller
 				return date('H:i', strtotime($row->start_time)) . ' - ' . date('H:i', strtotime($row->end_time));
 			})
 			->addColumn('action', function ($row) {
-				return '<a href="' . route('event.edit', $row->id) . '" class="btn btn-primary btn-sm">Edit</a>
+				return '<a href="' . route('program.edit', $row->id) . '" class="btn btn-primary btn-sm">Edit</a>
 						<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal' . $row->id . '">
 							Hapus
 					</button>';
@@ -88,7 +87,7 @@ class ProgramController extends Controller
 	{
 		$data = [
 			'title' => 'Edit Acara',
-			'event' => Program::findOrFail($id),
+			'program' => Program::findOrFail($id),
 		];
 
 		return view('admin.acara.edit', $data);
@@ -121,7 +120,7 @@ class ProgramController extends Controller
 		]);
 
 		toast('Acara telah berhasil diubah', 'success');
-		return redirect()->route('event');
+		return redirect()->route('program');
 	}
 
 	/**
@@ -132,6 +131,6 @@ class ProgramController extends Controller
 		Program::find($id)->delete();
 
 		toast('Acara telah berhasil dihapus', 'success');
-		return redirect()->route('event');
+		return redirect()->route('program');
 	}
 }
