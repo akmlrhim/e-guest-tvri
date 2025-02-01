@@ -3,7 +3,9 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\InternController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\SpeakerController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,4 +29,23 @@ Route::prefix('acara')->group(function () {
 	Route::get('{id}/edit', [ProgramController::class, 'edit'])->name('program.edit');
 	Route::put('{id}/update', [ProgramController::class, 'update'])->name('program.update');
 	Route::delete('{id}/delete', [ProgramController::class, 'destroy'])->name('program.destroy');
+});
+
+// free user route
+Route::prefix('portal')->group(function () {
+
+	// route tamu 
+	Route::prefix('tamu')->group(function () {
+		Route::get('/', [GuestController::class, 'index'])->name('tamu');
+	});
+
+	// route narasumber
+	Route::prefix('narasumber')->group(function () {
+		Route::get('/', [SpeakerController::class, 'index'])->name('narasumber');
+	});
+
+	// route magang 
+	Route::prefix('magang')->group(function () {
+		Route::get('/', [InternController::class, 'index'])->name('magang');
+	});
 });

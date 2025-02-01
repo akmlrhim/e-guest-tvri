@@ -5,120 +5,72 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>TVRI e-Guest</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <link href="{{ asset('img/tvri_logo.png') }}" rel="icon">
+  <link href="{{ asset('img/tvri_logo.png') }}" rel="apple-touch-icon">
 
-  <!-- Favicons -->
-  <link href="{{ asset('user_assets/assets/img/guest.png')}}" rel="icon">
-  <link href="{{ asset('user_assets/assets/img/guest.png')}}" rel="apple-touch-icon">
+  <link href="{{ asset('free_user_assets/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('free_user_assets/assets/vendor/aos/aos.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('fontawesome-free/css/all.min.css') }}">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="{{ asset('user_assets/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-  <link href="{{ asset('user_assets/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
-  <link href="{{ asset('user_assets/assets/vendor/aos/aos.css')}}" rel="stylesheet">
-  <link href="{{ asset('user_assets/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
-  <link href="{{ asset('user_assets/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+  <link href="{{ asset('free_user_assets/assets/css/main.css') }}" rel="stylesheet">
 
-  <!-- Main CSS File -->
-  <link href="{{ asset('user_assets/assets/css/main.css') }}" rel="stylesheet">
 </head>
 
 <body class="index-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+    <div class="container-fluid container-lg position-relative d-flex align-items-center">
 
       <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
         <h1 class="sitename">TVRI e-Guest</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero" class="active">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#team">Team</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i
-                    class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="">Credit</a></li>
+          <li><a href="">Contact</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        <i class="mobile-nav-toggle d-lg-none fas fa-bars "></i>
       </nav>
 
-      <a class="cta-btn" href="index.html#about">Login Admin</a>
+      <a class="cta-btn" href="{{ route('login') }}">Login Admin</a>
 
     </div>
   </header>
 
   <main class="main">
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero section dark-background">
-
-      <img src="{{ asset('user_assets/assets/img/hero-bg.jpg')}}" alt="" data-aos="fade-in">
+    <section class="hero section dark-background">
+      <img src="{{ asset('img/login_bg_2.jpg') }}" alt="" data-aos="fade-in">
 
       <div class="container d-flex flex-column align-items-center">
-        <h2 data-aos="fade-up" data-aos-delay="100">SELAMAT DATANG KNTL :D</h2>
-        <p data-aos="fade-up" data-aos-delay="200">We are team of talented designers making websites with Bootstrap</p>
-        <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
-          <a href="#about" class="btn-get-started">Narasumber</a>
-          <a href="#about" class="btn-get-murdered">Magang</a>
-          <a href="#about" class="btn-get-murdered">Narapidana</a>
-          <!-- <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8"
-            class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch
-              Video</span></a> -->
+        <h2 data-aos="fade-up" data-aos-delay="100">
+          SELAMAT DATANG DI TVRI KALIMANTAN SELATAN
+        </h2>
+        <p data-aos="fade-up" data-aos-delay="200">
+          Silahkan pilih menu di bawah ini
+        </p>
+        <div class="d-flex mt-4 gap-3" data-aos="fade-up" data-aos-delay="300">
+          <a href="{{ route('narasumber') }}" class="btn btn-lg btn-primary">Narasumber</a>
+          <a href="{{ route('magang') }}" class="btn btn-lg btn-danger">Magang</a>
+          <a href="{{ route('tamu') }}" class="btn btn-lg btn-secondary">Tamu</a>
         </div>
       </div>
 
-    </section><!-- /Hero Section -->
+    </section>
 
   </main>
 
-  <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+      class="fas fa-arrow-up"></i></a>
 
-  <!-- Preloader -->
-  <!-- <div id="preloader"></div> -->
+  <script src="{{ asset('free_user_assets/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('free_user_assets/assets/vendor/aos/aos.js') }}"></script>
+  <script src="{{ asset('free_user_assets/assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+  <script src="{{ asset('free_user_assets/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
 
-  <!-- Vendor JS Files -->
-  <script src="{{ asset('user_assets/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{ asset('user_assets/assets/vendor/php-email-form/validate.js')}}"></script>
-  <script src="{{ asset('user_assets/assets/vendor/aos/aos.js')}}"></script>
-  <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
-  <script src="{{ asset('user_assets/assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
-  <script src="{{ asset('user_assets/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
-  <script src="{{ asset('user_assets/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js')}}"></script>
-  <script src="{{ asset('user_assets/assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
-
-  <!-- Main JS File -->
-  <script src="{{ asset('user_assets/assets/js/main.js')}}"></script>
+  <script src="{{ asset('free_user_assets/assets/js/main.js') }}"></script>
 
 </body>
 
