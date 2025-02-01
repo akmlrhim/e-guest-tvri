@@ -6,7 +6,7 @@ use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-	return view('welcome');
+	return view('user.index');
 });
 
 // Route autentikasi
