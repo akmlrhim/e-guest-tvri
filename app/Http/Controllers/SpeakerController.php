@@ -7,59 +7,59 @@ use Illuminate\Http\Request;
 
 class SpeakerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
+	/**
+	 * Display a listing of the resource.
+	 */
+	public function index()
+	{
+		return view('free_user.narasumber.index');
+	}
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+	/**
+	 * Show the form for creating a new resource.
+	 */
+	public function create()
+	{
+		//
+	}
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+	/**
+	 * Store a newly created resource in storage.
+	 */
+	public function store(Request $request)
+	{
+		//
+	}
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Speaker $speaker)
-    {
-        //
-    }
+	/**
+	 * Display the specified resource.
+	 */
+	public function show(Speaker $speaker)
+	{
+		//
+	}
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Speaker $speaker)
-    {
-        //
-    }
+	/**
+	 * Show the form for editing the specified resource.
+	 */
+	public function edit(Speaker $speaker)
+	{
+		//
+	}
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Speaker $speaker)
-    {
-        //
-    }
+	/**
+	 * Update the specified resource in storage.
+	 */
+	public function update(Request $request, Speaker $speaker)
+	{
+		//
+	}
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Speaker $speaker)
-    {
-        //
-    }
+	/**
+	 * Remove the specified resource from storage.
+	 */
+	public function destroy(Speaker $speaker)
+	{
+		//
+	}
 }
