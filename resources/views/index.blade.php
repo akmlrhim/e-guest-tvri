@@ -9,8 +9,8 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="{{ asset('user_assets/assets/img/guest.png')}}" rel="icon">
-  <link href="{{ asset('user_assets/assets/img/guest.png')}}" rel="apple-touch-icon">
+  <link href="{{ asset('Dewi/assets/img/guest.png')}}" rel="icon">
+  <link href="{{ asset('Dewi/assets/img/guest.png')}}" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -20,14 +20,22 @@
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="{{ asset('user_assets/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-  <link href="{{ asset('user_assets/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
-  <link href="{{ asset('user_assets/assets/vendor/aos/aos.css')}}" rel="stylesheet">
-  <link href="{{ asset('user_assets/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
-  <link href="{{ asset('user_assets/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+  <link href="{{ asset('Dewi/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{ asset('Dewi/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+  <link href="{{ asset('Dewi/assets/vendor/aos/aos.css')}}" rel="stylesheet">
+  <link href="{{ asset('Dewi/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+  <link href="{{ asset('Dewi/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="{{ asset('user_assets/assets/css/main.css') }}" rel="stylesheet">
+  <link href="{{ asset('Dewi/assets/css/main.css') }}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Dewi
+  * Template URL: https://bootstrapmade.com/dewi-free-multi-purpose-html-template/
+  * Updated: Aug 07 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
 <body class="index-page">
@@ -81,7 +89,7 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
 
-      <img src="{{ asset('user_assets/assets/img/hero-bg.jpg')}}" alt="" data-aos="fade-in">
+      <img src="{{ asset('Dewi/assets/img/hero-bg.jpg')}}" alt="" data-aos="fade-in">
 
       <div class="container d-flex flex-column align-items-center">
         <h2 data-aos="fade-up" data-aos-delay="100">SELAMAT DATANG KNTL :D</h2>
@@ -108,17 +116,17 @@
   <!-- <div id="preloader"></div> -->
 
   <!-- Vendor JS Files -->
-  <script src="{{ asset('user_assets/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{ asset('user_assets/assets/vendor/php-email-form/validate.js')}}"></script>
-  <script src="{{ asset('user_assets/assets/vendor/aos/aos.js')}}"></script>
+  <script src="{{ asset('Dewi/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{ asset('Dewi/assets/vendor/php-email-form/validate.js')}}"></script>
+  <script src="{{ asset('Dewi/assets/vendor/aos/aos.js')}}"></script>
   <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
-  <script src="{{ asset('user_assets/assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
-  <script src="{{ asset('user_assets/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
-  <script src="{{ asset('user_assets/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js')}}"></script>
-  <script src="{{ asset('user_assets/assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
+  <script src="{{ asset('Dewi/assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
+  <script src="{{ asset('Dewi/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+  <script src="{{ asset('Dewi/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js')}}"></script>
+  <script src="{{ asset('Dewi/assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
 
   <!-- Main JS File -->
-  <script src="{{ asset('user_assets/assets/js/main.js')}}"></script>
+  <script src="{{ asset('Dewi/assets/js/main.js')}}"></script>
 
 </body>
 

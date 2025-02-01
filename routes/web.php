@@ -28,11 +28,3 @@ Route::prefix('acara')->group(function () {
 	Route::put('{id}/update', [ProgramController::class, 'update'])->name('program.update');
 	Route::delete('{id}/delete', [ProgramController::class, 'destroy'])->name('program.destroy');
 });
-
-// route buku tamu 
-Route::prefix('portal')->group(function () {
-
-	Route::prefix('tamu')->group(function () {
-		Route::get('/', [GuestController::class, 'index'])->name('guest');
-	});
-});
