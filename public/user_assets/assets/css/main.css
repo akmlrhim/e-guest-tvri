@@ -969,7 +969,25 @@ section,
   text-transform: uppercase;
 }
 
+.hero .btn-get-murdered {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 30px;
+  border-radius: 4px;
+  transition: 0.3s;
+  text-transform: uppercase;
+  margin-left: 10px;
+}
+
 .hero .btn-get-started:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+
+.hero .btn-get-murdered:hover {
   background: color-mix(in srgb, var(--accent-color), transparent 20%);
 }
 
@@ -1841,6 +1859,6 @@ section,
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
-}
+/* .starter-section {
+  Add your styles here
+} */
