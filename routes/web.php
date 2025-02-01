@@ -47,5 +47,6 @@ Route::prefix('portal')->group(function () {
 	// route magang 
 	Route::prefix('magang')->group(function () {
 		Route::get('/', [InternController::class, 'index'])->name('magang');
+		Route::post('/', [InternController::class, 'store'])->name('magang.store');
 	});
 });

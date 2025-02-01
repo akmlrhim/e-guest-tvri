@@ -16,11 +16,11 @@
 
 </head>
 
-<body class="p-4 overflow-hidden"
-  style="background-image: url('{{ asset('img/login_bg_2.jpg') }}'); background-size: cover">
+<body class="p-4" style="background-image: url('{{ asset('img/login_bg_2.jpg') }}'); background-size: cover">
 
   @yield('content')
 
+  @include('sweetalert::alert')
 
   @yield('script')
   <script src="{{ asset('free_user_assets/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

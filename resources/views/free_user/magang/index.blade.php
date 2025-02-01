@@ -1,39 +1,203 @@
 @extends('layouts.free_user.main')
 
 @section('content')
-  <div class="container d-flex justify-content-center align-items-center vh-100">
-    <div class="card shadow-lg w-100" style="max-width: 800px;">
+  <div class="container d-flex justify-content-center align-items-center vh-80">
+    <div class="card shadow-lg w-100" style="max-width: 900px;">
       <div class="card-body text-left">
-        <h2 class="text-primary mb-4 font-weight-bold">DAFTAR MAGANG</h2>
-        <form id="multiStepForm">
+        <h3 class="text-primary mb-3 fw-bold">DAFTAR MAGANG</h3>
+        <form id="multiStepForm" action="{{ route('magang.store') }}" method="POST" enctype="multipart/form-data">
+          @csrf
           <div class="step" id="step1">
-            <h4 class="text-secondary">Data Pribadi</h4>
-            <div class="mb-3 text-start">
-              <label for="nama" class="form-label">Nama</label>
-              <input type="text" id="nama" class="form-control" required>
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <label for="name" class="form-label">Nama</label>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" id="name" name="name"
+                       class="form-control @error('name') is-invalid @enderror" autocomplete="off" autofocus
+                       placeholder="Masukkan Nama" value="{{ old('name') }}" />
+                @error('name')
+                  <small class="text-danger">{{ $message }}</small>
+                @enderror
+              </div>
             </div>
-            <div class="mb-3 text-start">
-              <label for="email" class="form-lab	el">Email</label>
-              <input type="email" id="email" class="form-control" required>
+
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <label for="gender" class="form-label">Jenis Kelamin</label>
+              </div>
+              <div class="col-sm-4">
+                <input type="radio" id="male" name="gender" value="male"
+                       class="form-check-input @error('gender') is-invalid @enderror"
+                       {{ old('gender') == 'male' ? 'checked' : '' }} />
+                <label for="male" class="form-check-label">Laki-laki</label> <br>
+                @error('gender')
+                  <small class="text-danger">{{ $message }}</small>
+                @enderror
+              </div>
+              <div class="col-sm-4">
+                <input type="radio" id="female" name="gender" value="female"
+                       class="form-check-input @error('gender') is-invalid @enderror"
+                       {{ old('gender') == 'female' ? 'checked' : '' }}>
+                <label for="female" class="form-check-label">Perempuan</label>
+              </div>
             </div>
-            <button type="button" class="btn btn-primary w-100 mt-3" onclick="nextStep()">Lanjut</button>
+
+
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <label for="institusi" class="form-label">Asal Sekolah/institusi</label>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" id="institusi"
+                       class="form-control @error('institution') is-invalid
+								@enderror" name="institution"
+                       value="{{ old('institution') }}" autocomplete="off" placeholder="Masukkan Asal Sekolah" />
+
+                @error('institution')
+                  <small class="text-danger">{{ $message }}</small>
+                @enderror
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label class="col-sm-3 col-form-label" for="birthplace">TTL</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control @error('birthplace') is-invalid
+								@enderror"
+                       value="{{ old('birthplace') }}" id="birthplace" name="birthplace" placeholder="Tempat Lahir"
+                       autocomplete="off" onfocus="this.showPicker()">
+                <small class="text-primary">Tempat Lahir</small><br>
+                @error('birthplace')
+                  <small class="text-danger">{{ $message }}</small>
+                @enderror
+              </div>
+              <div class="col-sm-4">
+                <input type="date" class="form-control @error('date_of_birth') is-invalid
+								@enderror"
+                       value="{{ old('date_of_birth') }}" id="date_of_birth" name="date_of_birth" autocomplete="off"
+                       onfocus="this.showPicker()">
+                <small class="text-primary ">Tanggal Lahir</small><br>
+                @error('date_of_birth')
+                  <small class="text-danger">{{ $message }}</small>
+                @enderror
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label class="col-sm-3 col-form-label" for="start">Durasi Magang </label>
+              <div class="col-sm-4">
+                <input type="date" class="form-control @error('start') is-invalid
+									@enderror" id="start"
+                       value="{{ old('start') }}" name="start" autocomplete="off" onfocus="this.showPicker()">
+                <small class="text-primary">Mulai Magang</small><br>
+                @error('start')
+                  <small class="text-danger">{{ $message }}</small>
+                @enderror
+              </div>
+              <div class="col-sm-4">
+                <input type="date" class="form-control @error('end') is-invalid @enderror" id="end"
+                       name="end" value="{{ old('end') }}" autocomplete="off" onfocus="this.showPicker()">
+                <small class="text-primary">Selesai Magang</small><br>
+                @error('end')
+                  <small class="text-danger">{{ $message }}</small>
+                @enderror
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <label for="phone_number" class="form-label">Nomor HP</label>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" inputmode="numeric" id="phone_number"
+                       class="form-control @error('phone_number') is-invalid @enderror"
+                       autocomplete="off" name="phone_number" value="{{ old('phone_number') }}"
+                       placeholder="Masukkan Nomor HP" />
+
+
+                @error('phone_number')
+                  <small class="text-danger">{{ $message }}</small>
+                @enderror
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <label for="email" class="form-label">Email</label>
+              </div>
+              <div class="col-sm-9">
+                <input type="email" id="email" name="email"
+                       class="form-control @error('email') is-invalid @enderror" autocomplete="off"
+                       placeholder="Masukkan Email" value="{{ old('email') }}" />
+                @error('email')
+                  <small class="text-danger">{{ $message }}</small>
+                @enderror
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <label for="address" class="form-label">Alamat Rumah</label>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" id="address" name="address"
+                       class="form-control @error('address') is-invalid
+									@enderror"
+                       placeholder="Masukkan Alamat"
+                       value="{{ old('address') }}" autocomplete="off" />
+                @error('address')
+                  <small class="text-danger">{{ $message }}</small>
+                @enderror
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-sm-3">
+                <label for="parent_number" class="form-label">Nomor HP Orang Tua</label>
+              </div>
+              <div class="col-sm-9">
+                <input type="text" inputmode="numeric" id="parent_number"
+                       class="form-control @error('parent_number') is-invalid
+									@enderror" autocomplete="off"
+                       name="parent_number" value="{{ old('parent_number') }}"
+                       placeholder="Masukkan Nomor HP Orang Tua" />
+                @error('parent_number')
+                  <small class="text-danger">{{ $message }}</small>
+                @enderror
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6">
+                <a href="/" class="btn btn-danger mt-2 w-100">Kembali</a>
+              </div>
+              <div class="col-6">
+                <button type="button" class="btn btn-primary w-100 mt-2" onclick="nextStep()">Lanjut</button>
+              </div>
+            </div>
           </div>
 
           <div class="step d-none" id="step2">
-            <h4 class="text-secondary">Ambil Gambar</h4>
+            <h4 class="fw-bold">Ambil Foto</h4>
             <div class="row">
               <div class="col-6">
-                <h5 class="text-secondary">Kamera</h5>
+                <h5 class="fw-bold">Kamera</h5>
                 <div class="border rounded p-2">
                   <video id="webcam" class="w-100" autoplay></video>
                 </div>
                 <button type="button" class="btn btn-warning w-100 mt-2" onclick="takeSnapshot()">Ambil Foto</button>
               </div>
               <div class="col-6">
-                <h5 class="text-secondary">Foto yang Diambil</h5>
+                <h5 class="fw-bold">Foto yang Diambil</h5>
                 <canvas id="snapshot" class="d-none mt-2 w-100"></canvas>
+                <input type="hidden" name="photo" id="imageInput">
               </div>
             </div>
+
+            @error('photo')
+              <small class="text-danger">{{ $message }}</small>
+            @enderror
 
             <div class="row">
               <div class="col-6">
@@ -41,10 +205,9 @@
               </div>
 
               <div class="col-6">
-                <button type="submit" class="btn btn-success w-100 mt-3">Kirim</button>
+                <button type="submit" class="btn btn-success w-100 mt-3">Selesai</button>
               </div>
             </div>
-
           </div>
         </form>
       </div>
@@ -86,6 +249,9 @@
       canvas.height = video.videoHeight;
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
       canvas.classList.remove('d-none');
+
+      const imageData = canvas.toDataURL('image/png');
+      document.getElementById('imageInput').value = imageData;
     }
   </script>
 @endsection

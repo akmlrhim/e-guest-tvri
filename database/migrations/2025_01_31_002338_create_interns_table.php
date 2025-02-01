@@ -26,7 +26,7 @@ return new class extends Migration
 			$table->string('phone_number');
 			$table->text('address');
 			$table->string('parent_number');
-			$table->string('photo', 2048)->nullable()->default('default.jpg');
+			$table->string('photo', 2048)->default('default.jpg');
 			$table->timestamps();
 		});
 	}
