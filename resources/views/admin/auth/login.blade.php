@@ -25,7 +25,7 @@
       <div class="card-header text-center">
         <img src="{{ asset('img/tvri_logo_2.png') }}" style="width: 50%" alt="">
       </div>
-      <div class="card-body">
+      <div class="card-body ">
         <p class="login-box-msg">Sign in to start your session</p>
 
         <form action="{{ route('login.process') }}" method="POST">
