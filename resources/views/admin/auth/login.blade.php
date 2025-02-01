@@ -26,7 +26,7 @@
         <img src="{{ asset('img/tvri_logo_2.png') }}" style="width: 50%" alt="">
       </div>
       <div class="card-body ">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg font-weight-bold">Sign in to start your session</p>
 
         <form action="{{ route('login.process') }}" method="POST">
           @csrf
@@ -61,7 +61,11 @@
           </div>
 
           <div class="row">
-            <div class="col-12">
+            <div class="col-6">
+              <a href="/" class="btn text-primary">Kembali</a>
+            </div>
+
+            <div class="col-6">
               <button type="submit" class="btn btn-primary btn-block">Login</button>
             </div>
           </div>
