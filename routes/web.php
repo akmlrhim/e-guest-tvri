@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\EventController;
+use App\Http\Controllers\ProgramController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,11 +19,11 @@ Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard'
 
 // acara route 
 Route::prefix('acara')->group(function () {
-	Route::get('/', [EventController::class, 'index'])->name('event');
-	Route::get('show', [EventController::class, 'show'])->name('event.show');
-	Route::get('tambah', [EventController::class, 'create'])->name('event.create');
-	Route::post('store', [EventController::class, 'store'])->name('event.store');
-	Route::get('{id}/edit', [EventController::class, 'edit'])->name('event.edit');
-	Route::put('{id}/update', [EventController::class, 'update'])->name('event.update');
-	Route::delete('{id}/delete', [EventController::class, 'destroy'])->name('event.destroy');
+	Route::get('/', [ProgramController::class, 'index'])->name('program');
+	Route::get('show', [ProgramController::class, 'show'])->name('program.show');
+	Route::get('tambah', [ProgramController::class, 'create'])->name('program.create');
+	Route::post('store', [ProgramController::class, 'store'])->name('program.store');
+	Route::get('{id}/edit', [ProgramController::class, 'edit'])->name('program.edit');
+	Route::put('{id}/update', [ProgramController::class, 'update'])->name('program.update');
+	Route::delete('{id}/delete', [ProgramController::class, 'destroy'])->name('program.destroy');
 });
