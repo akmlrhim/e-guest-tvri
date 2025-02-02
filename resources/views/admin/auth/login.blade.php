@@ -21,7 +21,7 @@
   @include('sweetalert::alert')
 
   <div class="login-box">
-    <div class="card card-outline card-primary">
+    <div class="card card-outline card-primary shadow">
       <div class="card-header text-center">
         <img src="{{ asset('img/tvri_logo_2.png') }}" style="width: 50%" alt="">
       </div>

@@ -11,7 +11,8 @@ class InternController extends Controller
 
 	public function index()
 	{
-		return view('free_user.magang.index');
+		$title = 'Magang';
+		return view('free_user.magang.index', compact('title'));
 	}
 
 	public function store(Request $request)
@@ -25,7 +26,7 @@ class InternController extends Controller
 				'date_of_birth' => 'required',
 				'start' => 'required|after:today',
 				'end' => 'required|after:start',
-				'email' => 'required',
+				'email' => 'required|email',
 				'phone_number' => 'required',
 				'address' => 'required',
 				'parent_number' => 'required',
@@ -42,6 +43,7 @@ class InternController extends Controller
 				'end.required' => 'Tanggal selesai wajib diisi',
 				'end.after' => 'Tanggal selesai harus setelah tanggal mulai',
 				'email.required' => 'Email wajib diisi',
+				'email.email' => 'Format email salah',
 				'phone_number.required' => 'Nomor telepon wajib diisi',
 				'address.required' => 'Alamat wajib diisi',
 				'parent_number.required' => 'Nomor orang tua wajib diisi',
@@ -58,7 +60,7 @@ class InternController extends Controller
 			Storage::disk('public')->put('magang/' . $filename, base64_decode($imageData));
 		}
 
-		Intern::create([
+		$intern = Intern::create([
 			'name' => $request->name,
 			'gender' => $request->gender,
 			'institution' => $request->institution,
@@ -73,7 +75,32 @@ class InternController extends Controller
 			'photo' => $filename
 		]);
 
-		toast('Magang berhasil ditambahkan', 'success');
-		return redirect()->back();
+		session(['intern-submitted' => true]);
+
+		toast('Sukses menyimpan data', 'success');
+		return redirect()->route('magang.id.card', ['id' => $intern->id]);
+	}
+
+	public function card($id)
+	{
+		$title = 'ID Card';
+		$intern = Intern::find($id);
+		return view('free_user.magang.card', compact('intern', 'title'));
+	}
+
+	public function printCard($id) {}
+
+	public function sendToWhatsapp(Request $request) {}
+
+	public function finished(Request $request)
+	{
+		if (session()->has('intern-submitted')) {
+			$request->session()->forget('intern-submitted');
+		} else {
+			$request->session()->flush();
+		}
+
+		toast('Terimakasih telah menggunakan layanan kami', 'success');
+		return redirect('/');
 	}
 }

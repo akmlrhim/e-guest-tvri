@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>TVRI e-Guest</title>
+  <title>TVRI e-Guest | {{ $title }}</title>
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link href="{{ asset('img/tvri_logo.png') }}" rel="icon">
   <link href="{{ asset('img/tvri_logo.png') }}" rel="apple-touch-icon">

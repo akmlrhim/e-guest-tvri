@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>E-Guest TVRI</title>
+  <title>E-Guest TVRI | {{ $title }}</title>
 
   <link rel="shortcut icon" href="{{ asset('img/logo_tvri.png') }}" type="image/x-icon">
   <link rel="icon" type="image/png" href="{{ asset('img/tvri_logo.png') }}">
@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="{{ asset('admin_assets/css/adminlte.min.css') }}">
   <link rel="stylesheet" href="{{ asset('admin_assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
   <link rel="stylesheet"
-        href="{{ asset('admin_assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    href="{{ asset('admin_assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('admin_assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
 </head>
