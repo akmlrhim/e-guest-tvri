@@ -44,6 +44,8 @@
     <section class="hero section dark-background">
       <img src="{{ asset('img/login_bg_2.jpg') }}" alt="" data-aos="fade-in">
 
+      @include('sweetalert::alert')
+
       <div class="container d-flex flex-column align-items-center">
         <h2 data-aos="fade-up" data-aos-delay="100">
           SELAMAT DATANG DI TVRI KALIMANTAN SELATAN
