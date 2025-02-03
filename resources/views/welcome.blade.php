@@ -13,9 +13,15 @@
   <link href="{{ asset('free_user_assets/assets/vendor/aos/aos.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('fontawesome-free/css/all.min.css') }}">
 
-
   <link href="{{ asset('free_user_assets/assets/css/main.css') }}" rel="stylesheet">
 
+  <style>
+    @media (max-width: 768px) {
+      .d-flex.mt-4 {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 
 <body class="index-page">
@@ -34,9 +40,6 @@
         </ul>
         <i class="mobile-nav-toggle d-lg-none fas fa-bars "></i>
       </nav>
-
-      <a class="cta-btn" href="{{ route('login') }}">Login Admin</a>
-
     </div>
   </header>
 
@@ -45,21 +48,20 @@
       <img src="{{ asset('img/login_bg_2.jpg') }}" alt="" data-aos="fade-in">
 
       @include('sweetalert::alert')
-
-      <div class="container d-flex flex-column align-items-center">
+      <div class="container d-flex flex-column align-items-center text-center">
         <h2 data-aos="fade-up" data-aos-delay="100">
           SELAMAT DATANG DI TVRI KALIMANTAN SELATAN
         </h2>
         <p data-aos="fade-up" data-aos-delay="200">
           Silahkan pilih menu di bawah ini
         </p>
-        <div class="d-flex mt-4 gap-3" data-aos="fade-up" data-aos-delay="300">
-          <a href="{{ route('narasumber') }}" class="btn btn-lg btn-primary">Narasumber</a>
-          <a href="{{ route('magang') }}" class="btn btn-lg btn-danger">Magang</a>
-          <a href="{{ route('tamu') }}" class="btn btn-lg btn-secondary">Tamu</a>
+        <div class="d-flex mt-4 gap-3 flex-column flex-md-row justify-content-center" data-aos="fade-up"
+          data-aos-delay="300">
+          <a href="{{ route('narasumber') }}" class="btn btn-lg btn-primary w-100 w-md-auto">Narasumber</a>
+          <a href="{{ route('magang') }}" class="btn btn-lg btn-danger w-100 w-md-auto">Magang</a>
+          <a href="{{ route('tamu') }}" class="btn btn-lg btn-secondary w-100 w-md-auto">Tamu</a>
         </div>
       </div>
-
     </section>
 
   </main>

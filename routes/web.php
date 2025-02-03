@@ -37,6 +37,7 @@ Route::prefix('portal')->group(function () {
 	// route tamu 
 	Route::prefix('tamu')->group(function () {
 		Route::get('/', [GuestController::class, 'index'])->name('tamu');
+		Route::get('{id}/id-card', [GuestController::class, 'card'])->name('tamu.id.card');
 	});
 
 	// route narasumber

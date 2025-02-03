@@ -27,9 +27,9 @@ class InternController extends Controller
 				'start' => 'required|after:today',
 				'end' => 'required|after:start',
 				'email' => 'required|email',
-				'phone_number' => 'required',
+				'phone_number' => 'required|numeric',
 				'address' => 'required',
-				'parent_number' => 'required',
+				'parent_number' => 'required|numeric',
 				'photo' => 'required',
 			],
 			[
@@ -45,8 +45,10 @@ class InternController extends Controller
 				'email.required' => 'Email wajib diisi',
 				'email.email' => 'Format email salah',
 				'phone_number.required' => 'Nomor telepon wajib diisi',
+				'phone_number.numeric' => 'Nomor telepon harus angka',
 				'address.required' => 'Alamat wajib diisi',
 				'parent_number.required' => 'Nomor orang tua wajib diisi',
+				'parent_number.numeric' => 'Nomor orang tua harus angka',
 				'photo.required' => 'Ambil foto terlebih dahulu',
 			]
 		);

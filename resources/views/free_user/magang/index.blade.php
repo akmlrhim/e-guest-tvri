@@ -1,8 +1,8 @@
 @extends('layouts.free_user.main')
 
 @section('content')
-  <div class="container d-flex rounded-5 shadow-lg justify-content-center align-items-center vh-80">
-    <div class="card shadow-lg w-100 rounded-5" style="max-width: 900px;">
+  <div class="container d-flex rounded-5 justify-content-center align-items-center vh-80">
+    <div class="card w-100 rounded-5" style="max-width: 900px;">
       <div class="card-body text-left">
         <h3 class="text-primary mb-3 fw-bold">DAFTAR MAGANG</h3>
         <form id="multiStepForm" action="{{ route('magang.store') }}" method="POST" enctype="multipart/form-data">
@@ -27,7 +27,7 @@
                 <label for="gender" class="form-label">Jenis Kelamin</label>
               </div>
               <div class="col-sm-4">
-                <input type="radio" id="male" name="gender" value="male"
+                <input type="radio" id="male" name="gender" value="laki_laki"
                   class="form-check-input @error('gender') is-invalid @enderror"
                   {{ old('gender') == 'male' ? 'checked' : '' }} />
                 <label for="male" class="form-check-label">Laki-laki</label> <br>
@@ -36,7 +36,7 @@
                 @enderror
               </div>
               <div class="col-sm-4">
-                <input type="radio" id="female" name="gender" value="female"
+                <input type="radio" id="female" name="gender" value="perempuan"
                   class="form-check-input @error('gender') is-invalid @enderror"
                   {{ old('gender') == 'female' ? 'checked' : '' }} />
                 <label for="female" class="form-check-label">Perempuan</label>
@@ -171,18 +171,20 @@
           </div>
 
           <div class="step d-none" id="step2">
-            <h4 class="fw-bold">Ambil Foto</h4>
+            <h5 class="fw-bold">Ambil Foto</h5>
             <div class="row">
               <div class="col-6">
-                <h5 class="fw-bold">Kamera</h5>
-                <div class="border rounded p-2">
+                <h6>Kamera</h6>
+                <div class="p-2">
                   <video id="webcam" class="w-100" autoplay></video>
                 </div>
                 <button type="button" class="btn btn-warning w-100 mt-2" onclick="takeSnapshot()">Ambil Foto</button>
               </div>
               <div class="col-6">
-                <h5 class="fw-bold">Foto yang Diambil</h5>
-                <canvas id="snapshot" class="d-none mt-2 w-100"></canvas>
+                <h6>Foto</h6>
+                <div class="p-2">
+                  <canvas id="snapshot" class="d-none w-100"></canvas>
+                </div>
                 <input type="hidden" name="photo" id="imageInput">
               </div>
             </div>
