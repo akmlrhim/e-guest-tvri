@@ -37,7 +37,7 @@ class GuestController extends Controller
 			'phone_number.numeric' => 'Nomor telepon harus berupa angka',
 			'gender.required' => 'Jenis kelamin wajib diisi',
 			'objectives.required' => 'Tujuan wajib diisi',
-			'photo.required' => 'Foto wajib diisi',
+			'photo.required' => 'Ambil foto terlebih dahulu',
 		]);
 
 		$imageData = $request->photo;

@@ -43,7 +43,7 @@ class SpeakerController extends Controller
 			'phone_number.required' => 'Nomor telepon wajib diisi',
 			'phone_number.numeric' => 'Nomor telepon harus berupa angka',
 			'program_id.required' => 'Program wajib dipilih',
-			'photo.required' => 'Foto wajib diisi',
+			'photo.required' => 'Ambil foto terlebih dahulu',
 			'date_of_visit.required' => 'Tanggal kunjungan wajib diisi',
 		]);
 

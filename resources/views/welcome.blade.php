@@ -36,7 +36,7 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="">Credit</a></li>
-          <li><a href="">Contact</a></li>
+          <li><a href="{{ route('login') }}">Admin</a></li>
         </ul>
         <i class="mobile-nav-toggle d-lg-none fas fa-bars "></i>
       </nav>
