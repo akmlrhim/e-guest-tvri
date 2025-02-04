@@ -18,8 +18,8 @@ return new class extends Migration
 			$table->string('email');
 			$table->string('phone_number');
 			$table->string('gender');
-			$table->string('objectives');
-			$table->string('photo', 2048)->nullable()->default('default.jpg');
+			$table->text('objectives');
+			$table->string('photo')->default('default.jpg');
 			$table->timestamps();
 		});
 	}

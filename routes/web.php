@@ -37,7 +37,11 @@ Route::prefix('portal')->group(function () {
 	// route tamu 
 	Route::prefix('tamu')->group(function () {
 		Route::get('/', [GuestController::class, 'index'])->name('tamu');
-		Route::get('{id}/id-card', [GuestController::class, 'card'])->name('tamu.id.card');
+		Route::post('/', [GuestController::class, 'store'])->name('tamu.store');
+		Route::get('{id}/id-card', [GuestController::class, 'card'])->name('tamu.id.card')->middleware('guest-submitted');
+		Route::post('{id}/id-card-send', [GuestController::class, 'sendToEmail'])->name('tamu.id.card.send')->middleware('guest-submitted');
+		Route::get('{id}/print-id-card', [GuestController::class, 'printCard'])->name('tamu.id.card.print')->middleware('guest-submitted');
+		Route::post('finished', [GuestController::class, 'finished'])->name('tamu.finished');
 	});
 
 	// route narasumber
@@ -50,6 +54,8 @@ Route::prefix('portal')->group(function () {
 		Route::get('/', [InternController::class, 'index'])->name('magang');
 		Route::post('/', [InternController::class, 'store'])->name('magang.store');
 		Route::get('{id}/id-card', [InternController::class, 'card'])->name('magang.id.card')->middleware('intern-submitted');
+		Route::post('{id}/id-card-send', [InternController::class, 'sendToEmail'])->name('magang.id.card.send')->middleware('intern-submitted');
+		Route::get('{id}/print-id-card', [InternController::class, 'printCard'])->name('magang.id.card.print')->middleware('intern-submitted');
 		Route::post('finished', [InternController::class, 'finished'])->name('magang.finished');
 	});
 });

@@ -1,8 +1,8 @@
 @extends('layouts.free_user.main')
 
 @section('content')
-  <div class="container d-flex rounded-5 justify-content-center align-items-center vh-80">
-    <div class="card w-100 rounded-5" style="max-width: 900px;">
+  <div class="container d-flex rounded-3 justify-content-center align-items-center vh-80">
+    <div class="card w-100 rounded-3" style="max-width: 900px;">
       <div class="card-body text-left">
         <h3 class="text-primary mb-3 fw-bold">DAFTAR MAGANG</h3>
         <form id="multiStepForm" action="{{ route('magang.store') }}" method="POST" enctype="multipart/form-data">
@@ -27,19 +27,19 @@
                 <label for="gender" class="form-label">Jenis Kelamin</label>
               </div>
               <div class="col-sm-4">
-                <input type="radio" id="male" name="gender" value="laki_laki"
+                <input type="radio" id="laki_laki" name="gender" value="laki_laki"
                   class="form-check-input @error('gender') is-invalid @enderror"
-                  {{ old('gender') == 'male' ? 'checked' : '' }} />
-                <label for="male" class="form-check-label">Laki-laki</label> <br>
+                  {{ old('gender') == 'laki_laki' ? 'checked' : '' }} />
+                <label for="laki_laki" class="form-check-label">Laki-laki</label> <br>
                 @error('gender')
                   <small class="text-danger">{{ $message }}</small>
                 @enderror
               </div>
               <div class="col-sm-4">
-                <input type="radio" id="female" name="gender" value="perempuan"
+                <input type="radio" id="perempuan" name="gender" value="perempuan"
                   class="form-check-input @error('gender') is-invalid @enderror"
-                  {{ old('gender') == 'female' ? 'checked' : '' }} />
-                <label for="female" class="form-check-label">Perempuan</label>
+                  {{ old('gender') == 'perempuan' ? 'checked' : '' }} />
+                <label for="perempuan" class="form-check-label">Perempuan</label>
               </div>
             </div>
 

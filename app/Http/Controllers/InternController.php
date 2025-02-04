@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Intern;
 use Illuminate\Http\Request;
+use App\Mail\InternIdCardMail;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class InternController extends Controller
@@ -86,13 +90,36 @@ class InternController extends Controller
 	public function card($id)
 	{
 		$title = 'ID Card';
-		$intern = Intern::find($id);
+		$intern = Intern::findOrFail($id);
 		return view('free_user.magang.card', compact('intern', 'title'));
 	}
 
-	public function printCard($id) {}
+	public function printCard($id)
+	{
+		$intern = Intern::findOrFail($id);
+		$pdf = Pdf::loadView('free_user.magang.pdf', ['intern' => $intern]);
+		return $pdf->download($intern->name . ' - ID Card.pdf');
+	}
 
-	public function sendToWhatsapp(Request $request) {}
+	public function sendToEmail($id)
+	{
+		$intern = Intern::find($id);
+
+		if (!$intern) {
+			toast('Data tidak ditemukan', 'error');
+			return redirect()->back();
+		}
+
+		try {
+			Mail::to($intern->email)->send(new InternIdCardMail($intern));
+			toast('Email berhasil dikirim', 'success');
+			return redirect()->route('magang.id.card', ['id' => $intern->id]);
+		} catch (\Error $e) {
+			Log::error($e);
+			toast('Email gagal dikirim', 'error');
+			return redirect()->route('magang.id.card', ['id' => $intern->id]);
+		}
+	}
 
 	public function finished(Request $request)
 	{
@@ -102,7 +129,7 @@ class InternController extends Controller
 			$request->session()->flush();
 		}
 
-		toast('Terimakasih telah menggunakan layanan kami', 'success');
+		toast('Terimakasih telah menggunakan layanan kami', 'info');
 		return redirect('/');
 	}
 }

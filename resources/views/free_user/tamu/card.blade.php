@@ -4,12 +4,12 @@
   <div class="container d-flex rounded-5 shadow-lg justify-content-center align-items-center vh-100">
     <div class="card text-center">
       <div class="card-body">
-        <h5 class="card-title">Terima Kasih <b>{{ $intern->name }}</b>, kartu anda telah selesai dibuat.</h5>
-        <img src="{{ asset('storage/magang/' . $intern->photo) }}" alt="{{ $intern->name }}"
+        <h5 class="card-title">Terima Kasih <b>{{ $guest->name }}</b>, kartu anda telah selesai dibuat.</h5>
+        <img src="{{ asset('storage/tamu/' . $guest->photo) }}" alt="{{ $guest->name }}"
           class="mx-auto img-thumbnail d-block mb-3" style="width: 240px; height: 300px; object-fit: cover;">
         <div class="row">
           <div class="col-4">
-            <a href="{{ route('magang.id.card.print', ['id' => $intern->id]) }}" class="btn btn-success w-100"><i
+            <a href="{{ route('tamu.id.card.print', ['id' => $guest->id]) }}" class="btn btn-success w-100"><i
                 class="fas fa-download"></i>&nbsp; Cetak
               Kartu</a>
           </div>
@@ -28,11 +28,11 @@
   </div>
 
 
-  <form action="{{ route('magang.finished') }}" method="POST" id="finish-form">
+  <form action="{{ route('tamu.finished') }}" method="POST" id="finish-form">
     @csrf
   </form>
 
-  <form action="{{ route('magang.id.card.send', ['id' => $intern->id]) }}" method="POST" id="send-card">
+  <form action="{{ route('tamu.id.card.send', ['id' => $guest->id]) }}" method="POST" id="send-card">
     @csrf
   </form>
 @endsection

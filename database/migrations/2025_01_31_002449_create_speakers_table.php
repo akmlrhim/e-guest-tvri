@@ -21,7 +21,7 @@ return new class extends Migration
 			$table->unsignedBigInteger('program_id');
 			$table->date('date_of_visit');
 
-			$table->string('photo', 2048)->nullable()->default('default.jpg');
+			$table->string('photo')->default('default.jpg');
 			$table->foreign('program_id')->references('id')->on('programs');
 			$table->timestamps();
 		});

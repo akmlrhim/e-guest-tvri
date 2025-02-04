@@ -4,8 +4,6 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-use function Laravel\Prompts\text;
-
 return new class extends Migration
 {
 	/**
@@ -26,7 +24,7 @@ return new class extends Migration
 			$table->string('phone_number');
 			$table->text('address');
 			$table->string('parent_number');
-			$table->string('photo', 2048)->default('default.jpg');
+			$table->string('photo')->default('default.jpg');
 			$table->timestamps();
 		});
 	}

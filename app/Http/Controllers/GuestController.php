@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Guest;
 use Illuminate\Http\Request;
+use App\Mail\GuestIDCardMail;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class GuestController extends Controller
@@ -64,8 +68,48 @@ class GuestController extends Controller
 	public function card($id)
 	{
 		$title = 'ID Card';
-		$guest = Guest::find($id);
+		$guest = Guest::findOrFail($id);
 
 		return view('free_user.tamu.card', compact('guest', 'title'));
+	}
+
+	public function sendToEmail($id)
+	{
+		$guest = Guest::findOrFail($id);
+
+		if (!$guest) {
+			toast('Data tidak ditemukan', 'error');
+			return redirect()->back();
+		}
+
+		try {
+			Mail::to($guest->email)->send(new GuestIDCardMail($guest));
+			toast('Email berhasil dikirim', 'success');
+			return redirect()->route('tamu.id.card', ['id' => $guest->id]);
+		} catch (\Error $e) {
+			Log::error($e);
+			toast('Email gagal dikirim', 'error');
+			return redirect()->route('tamu.id.card', ['id' => $guest->id]);
+		}
+	}
+
+	public function printIDCard($id)
+	{
+		$guest = Guest::findOrFail($id);
+
+		$pdf = Pdf::loadView('free_user.tamu.pdf', ['guest' => $guest]);
+		return $pdf->download($guest->name . ' - ID Card.pdf');
+	}
+
+	public function finished(Request $request)
+	{
+		if (session()->has('guest-submitted')) {
+			$request->session()->forget('guest-submitted');
+		} else {
+			$request->session()->flush();
+		}
+
+		toast('Terimakasih telah menggunakan layanan kami', 'info');
+		return redirect('/');
 	}
 }

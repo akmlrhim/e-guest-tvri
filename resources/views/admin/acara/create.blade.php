@@ -27,10 +27,9 @@
               <div>
                 @foreach (['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'] as $day)
                   <div class="form-check">
-                    <input class="form-check-input @error('days')
-											is-invalid
-										@enderror"
-                      type="checkbox" name="days[]" id="{{ strtolower($day) }}" value="{{ $day }}">
+                    <input class="form-check-input @error('days') is-invalid @enderror" type="checkbox" name="days[]"
+                      id="{{ strtolower($day) }}" value="{{ $day }}"
+                      {{ is_array(old('days')) && in_array($day, old('days')) ? 'checked' : '' }}>
                     <label class="form-check-label" for="{{ strtolower($day) }}">{{ $day }}</label>
                   </div>
                 @endforeach
@@ -39,7 +38,6 @@
                 <small class="invalid-feedback d-block">{{ $message }}</small>
               @enderror
             </div>
-
 
             <div class="form-group row">
               <label class="col-sm-2 col-form-label">Jam Tayang Acara</label>
