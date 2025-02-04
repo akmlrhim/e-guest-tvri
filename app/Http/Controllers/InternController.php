@@ -103,7 +103,7 @@ class InternController extends Controller
 
 	public function sendToEmail($id)
 	{
-		$intern = Intern::find($id);
+		$intern = Intern::findOrFail($id);
 
 		if (!$intern) {
 			toast('Data tidak ditemukan', 'error');

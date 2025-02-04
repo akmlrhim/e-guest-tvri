@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Guest;
 use Illuminate\Http\Request;
-use App\Mail\GuestIDCardMail;
+use App\Mail\GuestIdCardMail;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -83,7 +83,7 @@ class GuestController extends Controller
 		}
 
 		try {
-			Mail::to($guest->email)->send(new GuestIDCardMail($guest));
+			Mail::to($guest->email)->send(new GuestIdCardMail($guest));
 			toast('Email berhasil dikirim', 'success');
 			return redirect()->route('tamu.id.card', ['id' => $guest->id]);
 		} catch (\Error $e) {
@@ -93,7 +93,7 @@ class GuestController extends Controller
 		}
 	}
 
-	public function printIDCard($id)
+	public function printCard($id)
 	{
 		$guest = Guest::findOrFail($id);
 

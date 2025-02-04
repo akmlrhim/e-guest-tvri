@@ -10,7 +10,7 @@
         <div class="row">
           <div class="col-4">
             <a href="{{ route('tamu.id.card.print', ['id' => $guest->id]) }}" class="btn btn-success w-100"><i
-                class="fas fa-download"></i>&nbsp; Cetak
+                class="fas fa-print"></i>&nbsp; Cetak
               Kartu</a>
           </div>
           <div class="col-4">
@@ -28,11 +28,11 @@
   </div>
 
 
-  <form action="{{ route('tamu.finished') }}" method="POST" id="finish-form">
+  <form action="{{ route('tamu.finished') }}" method="POST" class="d-none" id="finish-form">
     @csrf
   </form>
 
-  <form action="{{ route('tamu.id.card.send', ['id' => $guest->id]) }}" method="POST" id="send-card">
+  <form action="{{ route('tamu.id.card.send', ['id' => $guest->id]) }}" class="d-none" method="POST" id="send-card">
     @csrf
   </form>
 @endsection

@@ -2,9 +2,12 @@
 
 namespace App\Mail;
 
+use App\Models\Speaker;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -13,12 +16,13 @@ class SpeakerIdCardMail extends Mailable
 {
 	use Queueable, SerializesModels;
 
+	public $speaker;
 	/**
 	 * Create a new message instance.
 	 */
-	public function __construct()
+	public function __construct(Speaker $speaker)
 	{
-		//
+		$this->speaker = $speaker;
 	}
 
 	/**
@@ -27,7 +31,7 @@ class SpeakerIdCardMail extends Mailable
 	public function envelope(): Envelope
 	{
 		return new Envelope(
-			subject: 'Speaker I D Card Mail',
+			subject: 'Speaker ID Card Mail',
 		);
 	}
 
@@ -37,7 +41,10 @@ class SpeakerIdCardMail extends Mailable
 	public function content(): Content
 	{
 		return new Content(
-			view: 'view.name',
+			view: 'free_user.narasumber.email',
+			with: [
+				'speaker' => $this->speaker
+			],
 		);
 	}
 
@@ -48,6 +55,11 @@ class SpeakerIdCardMail extends Mailable
 	 */
 	public function attachments(): array
 	{
-		return [];
+		$pdf = Pdf::loadView('free_user.narasumber.pdf', ['speaker' => $this->speaker])->output();
+
+		return [
+			Attachment::fromData(fn() => $pdf, $this->speaker->name . ' - ID Card.pdf')
+				->withMime('application/pdf'),
+		];
 	}
 }

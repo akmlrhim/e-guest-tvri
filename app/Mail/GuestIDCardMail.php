@@ -2,52 +2,64 @@
 
 namespace App\Mail;
 
+use App\Models\Guest;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Mail\Mailables\Attachment;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class GuestIDCardMail extends Mailable
+class GuestIdCardMail extends Mailable
 {
-    use Queueable, SerializesModels;
+	use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
-    public function __construct()
-    {
-        //
-    }
+	public $guest;
+	/**
+	 * Create a new message instance.
+	 */
+	public function __construct(Guest $guest)
+	{
+		$this->guest = $guest;
+	}
 
-    /**
-     * Get the message envelope.
-     */
-    public function envelope(): Envelope
-    {
-        return new Envelope(
-            subject: 'Guest I D Card Mail',
-        );
-    }
+	/**
+	 * Get the message envelope.
+	 */
+	public function envelope(): Envelope
+	{
+		return new Envelope(
+			subject: 'Guest ID Card Mail',
+		);
+	}
 
-    /**
-     * Get the message content definition.
-     */
-    public function content(): Content
-    {
-        return new Content(
-            view: 'view.name',
-        );
-    }
+	/**
+	 * Get the message content definition.
+	 */
+	public function content(): Content
+	{
+		return new Content(
+			view: 'free_user.tamu.email',
+			with: [
+				'guest' => $this->guest,
+			]
+		);
+	}
 
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
-     */
-    public function attachments(): array
-    {
-        return [];
-    }
+	/**
+	 * Get the attachments for the message.
+	 *
+	 * @return array<int, \Illuminate\Mail\Mailables\Attachment>
+	 */
+	public function attachments(): array
+	{
+		$pdf = Pdf::loadView('free_user.tamu.pdf', ['guest' => $this->guest])->output();
+
+		return [
+			Attachment::fromData(fn() => $pdf, $this->guest->name . ' - ID Card.pdf')
+				->withMime('application/pdf'),
+		];
+	}
 }

@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Middleware\InternSubmitted;
 use Illuminate\Foundation\Application;
+use App\Http\Middleware\GuestSubmitted;
+use App\Http\Middleware\InternSubmitted;
+use App\Http\Middleware\SpeakerSubmitted;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 
@@ -14,7 +16,9 @@ return Application::configure(basePath: dirname(__DIR__))
 	->withMiddleware(function (Middleware $middleware) {
 		$middleware->trustHosts(at: ['127.0.0.1', 'localhost']);
 		$middleware->alias([
-			'intern-submitted' => InternSubmitted::class
+			'intern-submitted' => InternSubmitted::class,
+			'guest-submitted' => GuestSubmitted::class,
+			'speaker-submitted' => SpeakerSubmitted::class
 		]);
 	})
 	->withExceptions(function (Exceptions $exceptions) {

@@ -47,6 +47,11 @@ Route::prefix('portal')->group(function () {
 	// route narasumber
 	Route::prefix('narasumber')->group(function () {
 		Route::get('/', [SpeakerController::class, 'index'])->name('narasumber');
+		Route::post('/', [SpeakerController::class, 'store'])->name('narasumber.store');
+		Route::get('{id}/id-card', [SpeakerController::class, 'card'])->name('narasumber.id.card')->middleware('speaker-submitted');
+		Route::post('{id}/id-card-send', [SpeakerController::class, 'sendToEmail'])->name('narasumber.id.card.send')->middleware('speaker-submitted');
+		Route::get('{id}/print-id-card', [SpeakerController::class, 'printCard'])->name('narasumber.id.card.print')->middleware('speaker-submitted');
+		Route::post('finished', [SpeakerController::class, 'finished'])->name('narasumber.finished');
 	});
 
 	// route magang 

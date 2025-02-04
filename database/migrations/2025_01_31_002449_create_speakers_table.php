@@ -23,6 +23,7 @@ return new class extends Migration
 
 			$table->string('photo')->default('default.jpg');
 			$table->foreign('program_id')->references('id')->on('programs');
+
 			$table->timestamps();
 		});
 	}
