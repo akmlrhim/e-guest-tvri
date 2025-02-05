@@ -1,15 +1,5 @@
 <div class="sidebar">
-
-  <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-    <div class="image">
-      <img src="https://adminlte.io/themes/v3/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-    </div>
-    <div class="info">
-      <a href="#" class="d-block">Alexander Pierce</a>
-    </div>
-  </div>
-
-  <nav class="mt-2">
+  <nav class="mt-4">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
       <li class="nav-item">
@@ -20,28 +10,28 @@
       </li>
 
       <li class="nav-item">
-        <a href="{{ route('program') }}" class="nav-link">
+        <a href="{{ route('acara') }}" class="nav-link">
           <i class="nav-icon fas fa-calendar-check"></i>
           <p>Acara</p>
         </a>
       </li>
 
       <li class="nav-item">
-        <a href="" class="nav-link">
+        <a href="{{ route('admin.tamu') }}" class="nav-link">
           <i class="nav-icon fas fa-users"></i>
           <p>Tamu</p>
         </a>
       </li>
 
       <li class="nav-item">
-        <a href="" class="nav-link">
+        <a href="{{ route('admin.narasumber') }}" class="nav-link">
           <i class="nav-icon fas fa-user-check"></i>
           <p>Narasumber</p>
         </a>
       </li>
 
       <li class="nav-item">
-        <a href="" class="nav-link">
+        <a href="{{ route('admin.magang') }}" class="nav-link">
           <i class="nav-icon fas fa-school"></i>
           <p>Magang</p>
         </a>

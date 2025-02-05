@@ -31,7 +31,7 @@ class SpeakerIdCardMail extends Mailable
 	public function envelope(): Envelope
 	{
 		return new Envelope(
-			subject: 'Speaker ID Card Mail',
+			subject: 'ID Card Narasumber',
 		);
 	}
 

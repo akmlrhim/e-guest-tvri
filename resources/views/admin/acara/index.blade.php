@@ -6,7 +6,7 @@
 
       {{-- button tambah data  --}}
       <div class="d-flex justify-content-start mb-3">
-        <a class="btn btn-primary" href="{{ route('program.create') }}">
+        <a class="btn btn-primary" href="{{ route('acara.create') }}">
           Tambah Data Acara
         </a>
       </div>
@@ -15,14 +15,24 @@
       {{-- data  --}}
       <div class="card">
         <div class="card-body">
+
+          <div class="mb-3">
+            <label for="sortOrder" class="mr-2">Urutkan:</label>
+            <select id="sortOrder" class="form-control d-inline-block w-auto">
+              <option value="desc">DESC</option>
+              <option value="asc">ASC</option>
+            </select>
+          </div>
+
           <div class="table-responsive-sm">
-            <table class="table table-bordered text-center table-sm" id="tables" style="width: 100%;">
+            <table class="table table-bordered text-center table-sm text-sm" id="tables" style="width: 100%;">
               <thead class="font-weight-bold">
                 <tr>
                   <th scope="col">No</th>
                   <th scope="col">Nama Acara</th>
                   <th scope="col">Hari Tayang</th>
                   <th scope="col">Jam Tayang</th>
+                  <th scope="col"></th>
                   <th scope="col">Aksi</th>
                 </tr>
               </thead>
@@ -51,7 +61,7 @@
           <div class="modal-body text-center">
             <i class="fas fa-info-circle text-danger mb-4" style="font-size: 70px;"></i>
             <p>Apakah anda yakin untuk menghapus <b>{{ $row->program_name }}</b> ?</p>
-            <form action="{{ route('program.destroy', $row->id) }}" method="POST">
+            <form action="{{ route('acara.destroy', $row->id) }}" method="POST">
               @csrf
               @method('DELETE')
               <div class="modal-footer justify-content-center">
@@ -69,38 +79,57 @@
 
 @section('script')
   <script>
-    $('#tables').DataTable({
-      processing: true,
-      autoWidth: false,
-      responsive: true,
-      serverSide: true,
-      ajax: "{{ route('program.show') }}",
-      columns: [{
-          data: 'DT_RowIndex',
-          name: 'DT_RowIndex',
-          orderable: false,
-          searchable: false
+    $(document).ready(function() {
+      let table = $('#tables').DataTable({
+        processing: true,
+        autoWidth: false,
+        responsive: true,
+        serverSide: true,
+        ajax: {
+          url: "{{ route('acara.show') }}",
+          data: function(d) {
+            d.sortOrder = $('#sortOrder').val();
+          }
         },
-        {
-          data: 'program_name',
-          name: 'program_name'
-        },
-        {
-          data: 'days',
-          name: 'days'
-        },
-        {
-          data: 'showtime',
-          name: 'showtime',
-          orderable: false
-        },
-        {
-          data: 'action',
-          name: 'action',
-          orderable: false,
-          searchable: false
-        }
-      ]
+        order: [
+          [4, 'desc']
+        ],
+        columns: [{
+            data: 'DT_RowIndex',
+            name: 'DT_RowIndex',
+            orderable: false,
+            searchable: false
+          },
+          {
+            data: 'program_name',
+            name: 'program_name'
+          },
+          {
+            data: 'days',
+            name: 'days'
+          },
+          {
+            data: 'showtime',
+            name: 'showtime',
+            orderable: false
+          },
+          {
+            data: 'created_at',
+            name: 'created_at',
+            visible: false
+          },
+          {
+            data: 'action',
+            name: 'action',
+            orderable: false,
+            searchable: false
+          }
+        ]
+      });
+
+      $('#sortOrder').on('change', function() {
+        table.ajax.reload();
+      });
     });
   </script>
 @endsection

@@ -30,6 +30,7 @@ class AuthController extends Controller
 		];
 
 		if (Auth::attempt($credentials)) {
+			toast('Berhasil login', 'success');
 			return redirect()->route('dashboard');
 		}
 

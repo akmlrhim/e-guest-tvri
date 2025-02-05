@@ -13,9 +13,10 @@
 /* Fonts */
 
 /* @import url("https://fonts.cdnfonts.com/css/avenir"); */
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://cdn.rawgit.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59/raw/856f1dbb8d807aabceb80b6d4f94b464df461b3e/gotham.css");
+
 * {
-  font-family: "Inter", "system-ui", sans-serif;
+  font-family: "GothamPro", "system-ui", sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
@@ -440,7 +441,7 @@ h6 {
     font-size: 28px;
     line-height: 0;
     margin-right: 10px;
-    cursor: pointer;
+    cursor: poOpen Sans;
     transition: color 0.3s;
   }
 
@@ -1224,7 +1225,7 @@ section,
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  cursor: poOpen Sans;
   height: 100%;
 }
 
@@ -1474,7 +1475,7 @@ section,
 }
 
 .portfolio .portfolio-filters li {
-  cursor: pointer;
+  cursor: poOpen Sans;
   display: inline-block;
   padding: 0;
   font-size: 18px;

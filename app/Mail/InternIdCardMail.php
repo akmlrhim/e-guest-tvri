@@ -30,7 +30,7 @@ class InternIdCardMail extends Mailable
 	public function envelope(): Envelope
 	{
 		return new Envelope(
-			subject: 'Intern Id Card Mail',
+			subject: 'ID Card Magang',
 		);
 	}
 

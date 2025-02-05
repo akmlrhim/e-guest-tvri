@@ -24,24 +24,27 @@
 
             <div class="row mb-3">
               <div class="col-sm-3">
-                <label for="gender" class="form-label">Jenis Kelamin</label>
+                <label class="form-label">Jenis Kelamin</label>
               </div>
-              <div class="col-sm-4">
-                <input type="radio" id="laki_laki" name="gender" value="laki_laki"
-                  class="form-check-input @error('gender') is-invalid @enderror"
-                  {{ old('gender') == 'laki_laki' ? 'checked' : '' }} />
-                <label for="laki_laki" class="form-check-label">Laki-laki</label> <br>
+              <div class="col-sm-9 d-flex align-items-center">
+                <div class="form-check form-check-inline">
+                  <input type="radio" id="laki_laki" name="gender" value="laki_laki"
+                    class="form-check-input custom-radio @error('gender') is-invalid @enderror"
+                    {{ old('gender') == 'laki_laki' ? 'checked' : '' }} />
+                  <label for="laki_laki" class="form-check-label">Laki-laki</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input type="radio" id="perempuan" name="gender" value="perempuan"
+                    class="form-check-input custom-radio @error('gender') is-invalid @enderror"
+                    {{ old('gender') == 'perempuan' ? 'checked' : '' }} />
+                  <label for="perempuan" class="form-check-label">Perempuan</label>
+                </div>
                 @error('gender')
-                  <small class="text-danger">{{ $message }}</small>
+                  <div class="text-danger mt-1">{{ $message }}</div>
                 @enderror
               </div>
-              <div class="col-sm-4">
-                <input type="radio" id="perempuan" name="gender" value="perempuan"
-                  class="form-check-input @error('gender') is-invalid @enderror"
-                  {{ old('gender') == 'perempuan' ? 'checked' : '' }} />
-                <label for="perempuan" class="form-check-label">Perempuan</label>
-              </div>
             </div>
+
 
 
             <div class="row mb-3">

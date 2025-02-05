@@ -10,8 +10,8 @@
 
   <title>E-Guest TVRI | {{ $title }}</title>
 
-  <link rel="shortcut icon" href="{{ asset('img/logo_tvri.png') }}" type="image/x-icon">
-  <link rel="icon" type="image/png" href="{{ asset('img/tvri_logo.png') }}">
+  <link rel="shortcut icon" href="{{ asset('img/eguest_kalsel.png') }}" type="image/x-icon">
+  <link rel="icon" type="image/png" href="{{ asset('img/eguest_kalsel.png') }}">
   <link rel="stylesheet" href="{{ asset('fontawesome-free/css/all.min.css') }}">
   <link rel="stylesheet" href="{{ asset('style.css') }}">
   <link rel="stylesheet" href="{{ asset('admin_assets/css/adminlte.min.css') }}">

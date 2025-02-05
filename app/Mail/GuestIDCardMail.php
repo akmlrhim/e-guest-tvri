@@ -31,7 +31,7 @@ class GuestIdCardMail extends Mailable
 	public function envelope(): Envelope
 	{
 		return new Envelope(
-			subject: 'Guest ID Card Mail',
+			subject: 'ID Card Tamu',
 		);
 	}
 

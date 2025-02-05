@@ -7,7 +7,7 @@
       {{-- data  --}}
       <div class="card">
         <div class="card-body">
-          <form action="{{ route('program.store') }}" method="post">
+          <form action="{{ route('acara.store') }}" method="post">
             @csrf
 
             <div class="form-group">
@@ -67,7 +67,7 @@
             </div>
 
             <div class="mt-3">
-              <a class="btn btn-secondary" href="{{ route('program') }}">
+              <a class="btn btn-secondary" href="{{ route('acara') }}">
                 Kembali
               </a>
               <button type="submit" class="btn btn-primary">Simpan</button>

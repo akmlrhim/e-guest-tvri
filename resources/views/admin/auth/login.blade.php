@@ -7,7 +7,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>E-Guest TVRI | Login</title>
-  <link rel="icon" type="image/png" href="{{ asset('img/tvri_logo.png') }}">
+  <link rel="icon" type="image/png" href="{{ asset('img/eguest_kalsel.png') }}">
   <link rel="stylesheet" href="{{ asset('fontawesome-free/css/all.min.css') }}">
   <link rel="stylesheet" href="{{ asset('admin_assets/css/adminlte.min.css') }}">
   <link rel="stylesheet" href="{{ asset('style.css') }}">
@@ -22,8 +22,8 @@
 
   <div class="login-box">
     <div class="card card-outline card-primary shadow">
-      <div class="card-header text-center">
-        <img src="{{ asset('img/tvri_logo_2.png') }}" style="width: 50%" alt="">
+      <div class="card-header bg-primary text-center">
+        <img src="{{ asset('img/eguest_kalsel.png') }}" class="img-fluid" style="width: 50%" alt="">
       </div>
       <div class="card-body ">
         <p class="login-box-msg font-weight-bold">Sign in to start your session</p>

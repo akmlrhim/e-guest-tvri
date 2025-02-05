@@ -2,9 +2,12 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\GuestController as AdminGuestController;
+use App\Http\Controllers\Admin\InternController as AdminInternController;
 use App\Http\Controllers\FreeUser\GuestController;
 use App\Http\Controllers\FreeUser\InternController;
 use App\Http\Controllers\Admin\ProgramController;
+use App\Http\Controllers\Admin\SpeakerController as AdminSpeakerController;
 use App\Http\Controllers\FreeUser\SpeakerController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,24 +15,54 @@ Route::get('/', function () {
 	return view('welcome');
 });
 
-// Route autentikasi
-Route::get('login', [AuthController::class, 'index'])->name('login');
-Route::post('login', [AuthController::class, 'login'])->name('login.process');
-Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+Route::prefix('administrator')->group(function () {
+	// Route autentikasi
+	Route::get('login', [AuthController::class, 'index'])->name('login');
+	Route::post('login', [AuthController::class, 'login'])->name('login.process');
+	Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
-// Dashboard route 
-Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+	// Dashboard route 
+	Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-// acara route 
-Route::prefix('acara')->group(function () {
-	Route::get('/', [ProgramController::class, 'index'])->name('program');
-	Route::get('show', [ProgramController::class, 'show'])->name('program.show');
-	Route::get('tambah', [ProgramController::class, 'create'])->name('program.create');
-	Route::post('store', [ProgramController::class, 'store'])->name('program.store');
-	Route::get('{id}/edit', [ProgramController::class, 'edit'])->name('program.edit');
-	Route::put('{id}/update', [ProgramController::class, 'update'])->name('program.update');
-	Route::delete('{id}/delete', [ProgramController::class, 'destroy'])->name('program.destroy');
+	//magang route
+	Route::prefix('magang')->group(function () {
+		Route::get('/', [AdminInternController::class, 'index'])->name('admin.magang');
+		Route::get('show', [AdminInternController::class, 'show'])->name('admin.magang.show');
+		Route::get('{id}/edit', [AdminInternController::class, 'edit'])->name('admin.magang.edit');
+		Route::get('{id}/detail', [AdminInternController::class, 'detail'])->name('admin.magang.detail');
+		Route::put('{id}/update', [AdminInternController::class, 'update'])->name('admin.magang.update');
+		Route::delete('{id}/delete', [AdminInternController::class, 'destroy'])->name('admin.magang.destroy');
+	});
+
+	// tamu route 
+	Route::prefix('tamu')->group(function () {
+		Route::get('/', [AdminGuestController::class, 'index'])->name('admin.tamu');
+		Route::get('show', [AdminGuestController::class, 'show'])->name('admin.tamu.show');
+		Route::get('{id}/edit', [AdminGuestController::class, 'edit'])->name('admin.tamu.edit');
+		Route::get('{id}/detail', [AdminGuestController::class, 'detail'])->name('admin.tamu.detail');
+		Route::put('{id}/update', [AdminGuestController::class, 'update'])->name('admin.tamu.update');
+		Route::delete('{id}/delete', [AdminGuestController::class, 'destroy'])->name('admin.tamu.destroy');
+	});
+
+	// route narasumber 
+	Route::prefix('narasumber')->group(function () {
+		Route::get('/', [AdminSpeakerController::class, 'index'])->name('admin.narasumber');
+		Route::get('show', [AdminSpeakerController::class, 'show'])->name('admin.narasumber.show');
+	});
+
+	// acara route 
+	Route::prefix('acara')->group(function () {
+		Route::get('/', [ProgramController::class, 'index'])->name('acara');
+		Route::get('show', [ProgramController::class, 'show'])->name('acara.show');
+		Route::get('tambah', [ProgramController::class, 'create'])->name('acara.create');
+		Route::post('store', [ProgramController::class, 'store'])->name('acara.store');
+		Route::get('{id}/edit', [ProgramController::class, 'edit'])->name('acara.edit');
+		Route::put('{id}/update', [ProgramController::class, 'update'])->name('acara.update');
+		Route::delete('{id}/delete', [ProgramController::class, 'destroy'])->name('acara.destroy');
+	});
 });
+
+
 
 // free user route
 Route::prefix('portal')->group(function () {

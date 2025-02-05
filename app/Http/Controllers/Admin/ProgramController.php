@@ -62,9 +62,12 @@ class ProgramController extends Controller
 	/**
 	 * Display the specified resource.
 	 */
-	public function show()
+	public function show(Request $request)
 	{
-		$builder = Program::select('id', 'program_name', 'days', 'start_time', 'end_time');
+		$builder = Program::select('id', 'program_name', 'days', 'start_time', 'end_time', 'created_at');
+
+		$sortOrder = $request->input('sortOrder', 'desc');
+		$builder->orderBy('created_at', $sortOrder);
 
 		return DataTables::of($builder)
 			->addIndexColumn()
@@ -72,14 +75,15 @@ class ProgramController extends Controller
 				return date('H:i', strtotime($row->start_time)) . ' - ' . date('H:i', strtotime($row->end_time));
 			})
 			->addColumn('action', function ($row) {
-				return '<a href="' . route('program.edit', $row->id) . '" class="btn btn-primary btn-sm">Edit</a>
-						<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal' . $row->id . '">
-							Hapus
-					</button>';
+				return '<a href="' . route('acara.edit', $row->id) . '" class="btn btn-primary btn-sm">Edit</a>
+											<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal' . $row->id . '">
+													Hapus
+									</button>';
 			})
 			->rawColumns(['action'])
 			->make(true);
 	}
+
 
 	/**
 	 * Show the form for editing the specified resource.

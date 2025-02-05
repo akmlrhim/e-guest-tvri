@@ -24,7 +24,7 @@ class InternController extends Controller
 	{
 		$request->validate(
 			[
-				'name' => 'required',
+				'name' => 'required|unique:interns,name,except,id',
 				'gender' => 'required',
 				'institution' => 'required',
 				'birthplace' => 'required',
@@ -39,6 +39,7 @@ class InternController extends Controller
 			],
 			[
 				'name.required' => 'Nama wajib diisi',
+				'name.unique' => 'Nama sudah terdaftar',
 				'gender.required' => 'Jenis kelamin wajib diisi',
 				'institution.required' => 'Institusi wajib diisi',
 				'birthplace.required' => 'Tempat lahir wajib diisi',

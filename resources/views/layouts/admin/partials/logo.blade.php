@@ -1,4 +1,4 @@
 <a href="{{ route('dashboard') }}" class="brand-link">
-  <img src="{{ asset('img/tvri_logo.png') }}" class="brand-image" style="opacity: .8" alt="Logo TVRI">
-  <span class="brand-text font-weight-bold">E-GUEST TVRI</span>
+  <img src="{{ asset('img/eguest_kalsel.png') }}" alt="Logo TVRI" class="ml-3" width="60">
+  <span class="brand-text font-weight-bold">E-GUEST</span>
 </a>

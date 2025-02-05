@@ -14,8 +14,8 @@
               Kartu</a>
           </div>
           <div class="col-4">
-            <a href="#" onclick="event.preventDefault(); document.getElementById('send-card').submit();"
-              class="btn btn-primary w-100"><i class="fas fa-paper-plane"></i>&nbsp; Kirim</a>
+            <a href="#" onclick="submitForm(event);" class="btn btn-primary w-100" id="submitButton"><i
+                class="fas fa-paper-plane"></i>&nbsp; Kirim</a>
           </div>
           <div class="col-4">
             <a href="#" class="btn btn-secondary w-100"
@@ -35,4 +35,18 @@
   <form action="{{ route('magang.id.card.send', ['id' => $intern->id]) }}" class="d-none" method="POST" id="send-card">
     @csrf
   </form>
+@endsection
+
+@section('script')
+  <script>
+    function submitForm(event) {
+      event.preventDefault();
+      let button = document.getElementById('submitButton');
+
+      button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+      button.classList.add('disabled');
+
+      document.getElementById('send-card').submit();
+    }
+  </script>
 @endsection
