@@ -10,7 +10,7 @@
 
           <div class="mb-3">
             <label for="sortOrder" class="mr-2">Urutkan:</label>
-            <select id="sortOrder" class="form-control d-inline-block w-auto">
+            <select id="sortOrder" class="form-control form-control-sm d-inline-block w-auto">
               <option value="desc">DESC</option>
               <option value="asc">ASC</option>
             </select>
@@ -86,9 +86,7 @@
             d.sortOrder = $('#sortOrder').val();
           }
         },
-        order: [
-          [4, 'desc']
-        ],
+        order: [],
         columns: [{
             data: 'DT_RowIndex',
             name: 'DT_RowIndex',
@@ -97,27 +95,34 @@
           },
           {
             data: 'name',
-            name: 'name'
+            name: 'name',
+            orderable: false
           },
           {
             data: 'gender',
-            name: 'gender'
+            name: 'gender',
+            orderable: false
           },
           {
             data: 'email',
             name: 'email',
+            orderable: false
           },
           {
             data: 'phone_number',
             name: 'phone_number',
+            orderable: false
           },
           {
             data: 'origin',
             name: 'origin',
+            orderable: false
           },
           {
             data: 'objectives',
             name: 'objectives',
+            orderable: false
+
           },
           {
             data: 'created_at',

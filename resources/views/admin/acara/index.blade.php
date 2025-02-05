@@ -18,7 +18,7 @@
 
           <div class="mb-3">
             <label for="sortOrder" class="mr-2">Urutkan:</label>
-            <select id="sortOrder" class="form-control d-inline-block w-auto">
+            <select id="sortOrder" class="form-control form-control-sm d-inline-block w-auto">
               <option value="desc">DESC</option>
               <option value="asc">ASC</option>
             </select>
@@ -102,21 +102,23 @@
           },
           {
             data: 'program_name',
-            name: 'program_name'
+            name: 'program_name',
+            orderable: false
           },
           {
             data: 'days',
-            name: 'days'
+            name: 'days',
+            orderable: false
           },
           {
             data: 'showtime',
             name: 'showtime',
-            orderable: false
+            orderable: false,
           },
           {
             data: 'created_at',
             name: 'created_at',
-            visible: false
+            visible: false,
           },
           {
             data: 'action',

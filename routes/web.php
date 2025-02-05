@@ -48,6 +48,9 @@ Route::prefix('administrator')->group(function () {
 	Route::prefix('narasumber')->group(function () {
 		Route::get('/', [AdminSpeakerController::class, 'index'])->name('admin.narasumber');
 		Route::get('show', [AdminSpeakerController::class, 'show'])->name('admin.narasumber.show');
+		Route::get('{id}/edit', [AdminSpeakerController::class, 'edit'])->name('admin.narasumber.edit');
+		Route::put('{id}/update', [AdminSpeakerController::class, 'update'])->name('admin.narasumber.update');
+		Route::delete('{id}/delete', [AdminSpeakerController::class, 'destroy'])->name('admin.narasumber.destroy');
 	});
 
 	// acara route 

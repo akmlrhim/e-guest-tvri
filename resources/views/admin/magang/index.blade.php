@@ -85,9 +85,7 @@
             d.sortOrder = $('#sortOrder').val();
           }
         },
-        order: [
-          [4, 'desc']
-        ],
+        order: [],
         columns: [{
             data: 'DT_RowIndex',
             name: 'DT_RowIndex',
@@ -96,20 +94,25 @@
           },
           {
             data: 'name',
-            name: 'name'
+            name: 'name',
+            orderable: false
           },
           {
             data: 'gender',
-            name: 'gender'
+            name: 'gender',
+            orderable: false
           },
           {
             data: 'institution',
             name: 'institution',
+            orderable: false
           },
           {
-            data: 'start'
+            data: 'start',
+            orderable: false
           }, {
-            data: 'end'
+            data: 'end',
+            orderable: false
           },
           {
             data: 'created_at',
