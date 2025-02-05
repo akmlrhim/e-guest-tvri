@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\FreeUser;
 
+use App\Http\Controllers\Controller;
 use App\Models\Guest;
 use Illuminate\Http\Request;
 use App\Mail\GuestIdCardMail;

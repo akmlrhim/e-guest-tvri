@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\GuestController;
-use App\Http\Controllers\InternController;
-use App\Http\Controllers\ProgramController;
-use App\Http\Controllers\SpeakerController;
+use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\FreeUser\GuestController;
+use App\Http\Controllers\FreeUser\InternController;
+use App\Http\Controllers\Admin\ProgramController;
+use App\Http\Controllers\FreeUser\SpeakerController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\FreeUser;
 
+use App\Http\Controllers\Controller;
 use App\Models\Program;
 use App\Models\Speaker;
 use Illuminate\Http\Request;
