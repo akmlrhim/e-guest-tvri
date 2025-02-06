@@ -56,7 +56,7 @@ class ProgramController extends Controller
 		]);
 
 		toast('Acara baru telah ditambahkan', 'success');
-		return redirect()->route('program');
+		return redirect()->route('acara');
 	}
 
 	/**
@@ -125,7 +125,7 @@ class ProgramController extends Controller
 		]);
 
 		toast('Acara telah berhasil diubah', 'success');
-		return redirect()->route('program');
+		return redirect()->route('acara');
 	}
 
 	/**
@@ -136,6 +136,6 @@ class ProgramController extends Controller
 		Program::find($id)->delete();
 
 		toast('Acara telah berhasil dihapus', 'success');
-		return redirect()->route('program');
+		return redirect()->route('acara');
 	}
 }
