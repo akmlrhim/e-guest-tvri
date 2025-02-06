@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Guest;
+use App\Models\Intern;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Program;
+use App\Models\Speaker;
 
 class DashboardController extends Controller
 {
@@ -11,6 +15,10 @@ class DashboardController extends Controller
 	{
 		$data = [
 			'title' => 'Dashboard',
+			'magang' => Intern::count(),
+			'tamu' => Guest::count(),
+			'narasumber' => Speaker::count(),
+			'acara' => Program::count(),
 		];
 
 		return view('admin.dashboard.index', $data);

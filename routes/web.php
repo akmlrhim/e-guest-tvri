@@ -19,13 +19,13 @@ Route::prefix('administrator')->group(function () {
 	// Route autentikasi
 	Route::get('login', [AuthController::class, 'index'])->name('login');
 	Route::post('login', [AuthController::class, 'login'])->name('login.process');
-	Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+	Route::post('logout', [AuthController::class, 'logout'])->name('logout')->middleware('admin');
 
 	// Dashboard route 
-	Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+	Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('admin');
 
 	//magang route
-	Route::prefix('magang')->group(function () {
+	Route::prefix('magang')->middleware('admin')->group(function () {
 		Route::get('/', [AdminInternController::class, 'index'])->name('admin.magang');
 		Route::get('show', [AdminInternController::class, 'show'])->name('admin.magang.show');
 		Route::get('{id}/edit', [AdminInternController::class, 'edit'])->name('admin.magang.edit');

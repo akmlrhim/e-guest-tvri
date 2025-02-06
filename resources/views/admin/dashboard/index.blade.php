@@ -7,49 +7,48 @@
         <div class="col-lg-3 col-6x">
           <div class="small-box bg-info">
             <div class="inner">
-              <h3>150</h3>
-              <p>New Orders</p>
+              <h3>{{ $magang }}</h3>
+              <p>Peserta Magang</p>
             </div>
             <div class="icon">
-              <i class="fas fa-user "></i>
+              <i class="fas fa-school "></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
+
         <div class="col-lg-3 col-6">
-          <div class="small-box bg-info">
+          <div class="small-box bg-primary">
             <div class="inner">
-              <h3>150</h3>
-              <p>New Orders</p>
+              <h3>{{ $tamu }}</h3>
+              <p>Tamu</p>
             </div>
             <div class="icon">
-              <i class="fas fa-user "></i>
+              <i class="fas fa-users"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
+
         <div class="col-lg-3 col-6">
-          <div class="small-box bg-info">
+          <div class="small-box bg-warning">
             <div class="inner">
-              <h3>150</h3>
-              <p>New Orders</p>
+              <h3>{{ $narasumber }}</h3>
+              <p>Narasumber</p>
             </div>
             <div class="icon">
-              <i class="fas fa-user "></i>
+              <i class="fas fa-user-check"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
+
         <div class="col-lg-3 col-6">
-          <div class="small-box bg-info">
+          <div class="small-box bg-danger">
             <div class="inner">
-              <h3>150</h3>
-              <p>New Orders</p>
+              <h3>{{ $acara }}</h3>
+              <p>Acara</p>
             </div>
             <div class="icon">
-              <i class="fas fa-user "></i>
+              <i class="fas fa-calendar-check"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\AuthCheck;
 use Illuminate\Foundation\Application;
 use App\Http\Middleware\GuestSubmitted;
 use App\Http\Middleware\InternSubmitted;
@@ -18,7 +19,8 @@ return Application::configure(basePath: dirname(__DIR__))
 		$middleware->alias([
 			'intern-submitted' => InternSubmitted::class,
 			'guest-submitted' => GuestSubmitted::class,
-			'speaker-submitted' => SpeakerSubmitted::class
+			'speaker-submitted' => SpeakerSubmitted::class,
+			'admin' => AuthCheck::class
 		]);
 	})
 	->withExceptions(function (Exceptions $exceptions) {
