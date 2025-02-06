@@ -10,11 +10,11 @@
           <div class="step" id="step1">
             <div class="row mb-3">
               <div class="col-sm-3">
-                <label for="name" class="form-label">Nama</label>
+                <label for="name" class="col-form-label-sm">Nama</label>
               </div>
               <div class="col-sm-9">
                 <input type="text" id="name" name="name"
-                  class="form-control @error('name') is-invalid @enderror" autocomplete="off" autofocus
+                  class="form-control form-control-sm @error('name') is-invalid @enderror" autocomplete="off" autofocus
                   placeholder="Masukkan Nama" value="{{ old('name') }}" />
                 @error('name')
                   <small class="text-danger">{{ $message }}</small>
@@ -24,37 +24,38 @@
 
             <div class="row mb-3">
               <div class="col-sm-3">
-                <label class="form-label">Jenis Kelamin</label>
+                <label class="col-form-label-sm">Jenis Kelamin</label>
               </div>
-              <div class="col-sm-9 d-flex align-items-center">
-                <div class="form-check form-check-inline">
-                  <input type="radio" id="laki_laki" name="gender" value="laki_laki"
-                    class="form-check-input custom-radio @error('gender') is-invalid @enderror"
-                    {{ old('gender') == 'laki_laki' ? 'checked' : '' }} />
-                  <label for="laki_laki" class="form-check-label">Laki-laki</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input type="radio" id="perempuan" name="gender" value="perempuan"
-                    class="form-check-input custom-radio @error('gender') is-invalid @enderror"
-                    {{ old('gender') == 'perempuan' ? 'checked' : '' }} />
-                  <label for="perempuan" class="form-check-label">Perempuan</label>
+              <div class="col-sm-9">
+                <div class="d-flex align-items-center">
+                  <div class="form-check form-check-inline">
+                    <input type="radio" id="laki_laki" name="gender" value="laki_laki"
+                      class="form-check-input custom-radio @error('gender') is-invalid @enderror"
+                      {{ old('gender') == 'laki_laki' ? 'checked' : '' }} />
+                    <label for="laki_laki" class="form-check-label col-form-label-sm">Laki-laki</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input type="radio" id="perempuan" name="gender" value="perempuan"
+                      class="form-check-input custom-radio @error('gender') is-invalid @enderror"
+                      {{ old('gender') == 'perempuan' ? 'checked' : '' }} />
+                    <label for="perempuan" class="form-check-label col-form-label-sm">Perempuan</label>
+                  </div>
                 </div>
                 @error('gender')
-                  <div class="text-danger mt-1">{{ $message }}</div>
+                  <small class="text-danger mt-1 w-100">{{ $message }}</small>
                 @enderror
               </div>
             </div>
 
 
-
             <div class="row mb-3">
               <div class="col-sm-3">
-                <label for="institusi" class="form-label">Asal Sekolah/institusi</label>
+                <label for="institusi" class="col-form-label-sm">Asal Sekolah/institusi</label>
               </div>
               <div class="col-sm-9">
-                <input type="text" id="institusi" class="form-control @error('institution') is-invalid @enderror"
-                  name="institution" value="{{ old('institution') }}" autocomplete="off"
-                  placeholder="Masukkan Asal Sekolah" />
+                <input type="text" id="institusi"
+                  class="form-control form-control-sm @error('institution') is-invalid @enderror" name="institution"
+                  value="{{ old('institution') }}" autocomplete="off" placeholder="Masukkan Asal Sekolah" />
 
                 @error('institution')
                   <small class="text-danger">{{ $message }}</small>
@@ -63,9 +64,9 @@
             </div>
 
             <div class="row mb-3">
-              <label class="col-sm-3 col-form-label" for="birthplace">TTL</label>
+              <label class="col-sm-3 col-form-label-sm" for="birthplace">TTL</label>
               <div class="col-sm-4">
-                <input type="text" class="form-control @error('birthplace') is-invalid	@enderror"
+                <input type="text" class="form-control form-control-sm @error('birthplace') is-invalid	@enderror"
                   value="{{ old('birthplace') }}" id="birthplace" name="birthplace" placeholder="Tempat Lahir"
                   autocomplete="off" onfocus="this.showPicker()">
                 <small class="text-primary">Tempat Lahir</small><br>
@@ -74,7 +75,7 @@
                 @enderror
               </div>
               <div class="col-sm-4">
-                <input type="date" class="form-control @error('date_of_birth') is-invalid @enderror"
+                <input type="date" class="form-control form-control-sm @error('date_of_birth') is-invalid @enderror"
                   value="{{ old('date_of_birth') }}" id="date_of_birth" name="date_of_birth" autocomplete="off"
                   onfocus="this.showPicker()">
                 <small class="text-primary ">Tanggal Lahir</small><br>
@@ -85,18 +86,20 @@
             </div>
 
             <div class="row mb-3">
-              <label class="col-sm-3 col-form-label" for="start">Durasi Magang </label>
+              <label class="col-sm-3 col-form-label-sm" for="start">Durasi Magang </label>
               <div class="col-sm-4">
-                <input type="date" class="form-control @error('start') is-invalid @enderror" id="start"
-                  value="{{ old('start') }}" name="start" autocomplete="off" onfocus="this.showPicker()" />
+                <input type="date" class="form-control form-control-sm @error('start') is-invalid @enderror"
+                  id="start" value="{{ old('start') }}" name="start" autocomplete="off"
+                  onfocus="this.showPicker()" />
                 <small class="text-primary">Mulai Magang</small><br>
                 @error('start')
                   <small class="text-danger">{{ $message }}</small>
                 @enderror
               </div>
               <div class="col-sm-4">
-                <input type="date" class="form-control @error('end') is-invalid @enderror" id="end"
-                  name="end" value="{{ old('end') }}" autocomplete="off" onfocus="this.showPicker()" />
+                <input type="date" class="form-control form-control-sm @error('end') is-invalid @enderror"
+                  id="end" name="end" value="{{ old('end') }}" autocomplete="off"
+                  onfocus="this.showPicker()" />
                 <small class="text-primary">Selesai Magang</small><br>
                 @error('end')
                   <small class="text-danger">{{ $message }}</small>
@@ -106,11 +109,11 @@
 
             <div class="row mb-3">
               <div class="col-sm-3">
-                <label for="phone_number" class="form-label">Nomor HP</label>
+                <label for="phone_number" class="col-form-label-sm">Nomor HP</label>
               </div>
               <div class="col-sm-9">
                 <input type="text" inputmode="numeric" id="phone_number"
-                  class="form-control @error('phone_number') is-invalid @enderror" autocomplete="off"
+                  class="form-control form-control-sm @error('phone_number') is-invalid @enderror" autocomplete="off"
                   name="phone_number" value="{{ old('phone_number') }}" placeholder="Masukkan Nomor HP" />
 
                 @error('phone_number')
@@ -121,11 +124,11 @@
 
             <div class="row mb-3">
               <div class="col-sm-3">
-                <label for="email" class="form-label">Email</label>
+                <label for="email" class="col-form-label-sm">Email</label>
               </div>
               <div class="col-sm-9">
                 <input type="email" id="email" name="email"
-                  class="form-control @error('email') is-invalid @enderror" autocomplete="off"
+                  class="form-control form-control-sm @error('email') is-invalid @enderror" autocomplete="off"
                   placeholder="Masukkan Email" value="{{ old('email') }}" />
                 @error('email')
                   <small class="text-danger">{{ $message }}</small>
@@ -135,13 +138,13 @@
 
             <div class="row mb-3">
               <div class="col-sm-3">
-                <label for="address" class="form-label">Alamat Rumah</label>
+                <label for="address" class="col-form-label-sm">Alamat Rumah</label>
               </div>
               <div class="col-sm-9">
                 <input type="text" id="address" name="address"
-                  class="form-control @error('address') is-invalid
-									@enderror" placeholder="Masukkan Alamat"
-                  value="{{ old('address') }}" autocomplete="off" />
+                  class="form-control form-control-sm @error('address') is-invalid
+									@enderror"
+                  placeholder="Masukkan Alamat" value="{{ old('address') }}" autocomplete="off" />
                 @error('address')
                   <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -150,13 +153,14 @@
 
             <div class="row mb-3">
               <div class="col-sm-3">
-                <label for="parent_number" class="form-label">Nomor HP Orang Tua</label>
+                <label for="parent_number" class="col-form-label-sm">Nomor HP Orang Tua</label>
               </div>
               <div class="col-sm-9">
                 <input type="text" inputmode="numeric" id="parent_number"
-                  class="form-control @error('parent_number') is-invalid
-									@enderror" autocomplete="off"
-                  name="parent_number" value="{{ old('parent_number') }}" placeholder="Masukkan Nomor HP Orang Tua" />
+                  class="form-control form-control-sm @error('parent_number') is-invalid
+									@enderror"
+                  autocomplete="off" name="parent_number" value="{{ old('parent_number') }}"
+                  placeholder="Masukkan Nomor HP Orang Tua" />
                 @error('parent_number')
                   <small class="text-danger">{{ $message }}</small>
                 @enderror

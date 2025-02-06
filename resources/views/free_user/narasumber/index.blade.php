@@ -10,11 +10,11 @@
           <div class="step" id="step1">
             <div class="row mb-3">
               <div class="col-sm-3">
-                <label for="name" class="form-label">Nama</label>
+                <label for="name" class="col-form-label-sm">Nama</label>
               </div>
               <div class="col-sm-9">
                 <input type="text" id="name" name="name"
-                  class="form-control @error('name') is-invalid @enderror" autocomplete="off" autofocus
+                  class="form-control form-control-sm @error('name') is-invalid @enderror" autocomplete="off" autofocus
                   placeholder="Masukkan Nama" value="{{ old('name') }}" />
                 @error('name')
                   <small class="text-danger">{{ $message }}</small>
@@ -24,32 +24,36 @@
 
             <div class="row mb-3">
               <div class="col-sm-3">
-                <label for="gender" class="form-label">Jenis Kelamin</label>
+                <label class="col-form-label-sm">Jenis Kelamin</label>
               </div>
-              <div class="col-sm-4">
-                <input type="radio" id="laki_laki" name="gender" value="laki_laki"
-                  class="form-check-input custom-radio @error('gender') is-invalid @enderror"
-                  {{ old('gender') == 'laki_laki' ? 'checked' : '' }} />
-                <label for="laki_laki" class="form-check-label">Laki-laki</label> <br>
+              <div class="col-sm-9">
+                <div class="d-flex align-items-center">
+                  <div class="form-check form-check-inline">
+                    <input type="radio" id="laki_laki" name="gender" value="laki_laki"
+                      class="form-check-input custom-radio @error('gender') is-invalid @enderror"
+                      {{ old('gender') == 'laki_laki' ? 'checked' : '' }} />
+                    <label for="laki_laki" class="form-check-label col-form-label-sm">Laki-laki</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input type="radio" id="perempuan" name="gender" value="perempuan"
+                      class="form-check-input custom-radio @error('gender') is-invalid @enderror"
+                      {{ old('gender') == 'perempuan' ? 'checked' : '' }} />
+                    <label for="perempuan" class="form-check-label col-form-label-sm">Perempuan</label>
+                  </div>
+                </div>
                 @error('gender')
-                  <small class="text-danger">{{ $message }}</small>
+                  <small class="text-danger mt-1 w-100">{{ $message }}</small>
                 @enderror
-              </div>
-              <div class="col-sm-4">
-                <input type="radio" id="perempuan" name="gender" value="perempuan"
-                  class="form-check-input custom-radio @error('gender') is-invalid @enderror"
-                  {{ old('gender') == 'perempuan' ? 'checked' : '' }} />
-                <label for="perempuan" class="form-check-label">Perempuan</label>
               </div>
             </div>
 
             <div class="row mb-3">
               <div class="col-sm-3">
-                <label for="origin" class="form-label">Asal</label>
+                <label for="origin" class="col-form-label-sm">Asal</label>
               </div>
               <div class="col-sm-9">
                 <input type="text" id="origin" name="origin"
-                  class="form-control @error('origin') is-invalid @enderror" autocomplete="off" autofocus
+                  class="form-control form-control-sm @error('origin') is-invalid @enderror" autocomplete="off" autofocus
                   placeholder="Masukkan Asal" value="{{ old('origin') }}" />
                 @error('origin')
                   <small class="text-danger">{{ $message }}</small>
@@ -59,12 +63,12 @@
 
             <div class="row mb-3">
               <div class="col-sm-3">
-                <label for="phone_number" class="form-label">Nomor HP</label>
+                <label for="phone_number" class="col-form-label-sm">Nomor HP</label>
               </div>
               <div class="col-sm-9">
                 <input type="text" inputmode="numeric" id="phone_number"
-                  class="form-control @error('phone_number') is-invalid @enderror" autocomplete="off" name="phone_number"
-                  value="{{ old('phone_number') }}" placeholder="Masukkan Nomor HP" />
+                  class="form-control form-control-sm @error('phone_number') is-invalid @enderror" autocomplete="off"
+                  name="phone_number" value="{{ old('phone_number') }}" placeholder="Masukkan Nomor HP" />
 
                 @error('phone_number')
                   <small class="text-danger">{{ $message }}</small>
@@ -74,11 +78,11 @@
 
             <div class="row mb-3">
               <div class="col-sm-3">
-                <label for="email" class="form-label">Email</label>
+                <label for="email" class="col-form-label-sm">Email</label>
               </div>
               <div class="col-sm-9">
                 <input type="email" id="email" name="email"
-                  class="form-control @error('email') is-invalid @enderror" autocomplete="off"
+                  class="form-control form-control-sm @error('email') is-invalid @enderror" autocomplete="off"
                   placeholder="Masukkan Email" value="{{ old('email') }}" />
                 @error('email')
                   <small class="text-danger">{{ $message }}</small>
@@ -88,12 +92,12 @@
 
             <div class="row mb-3">
               <div class="col-sm-3">
-                <label for="date_of_visit" class="form-label">Tanggal Kunjungan</label>
+                <label for="date_of_visit" class="col-form-label-sm">Tanggal Kunjungan</label>
               </div>
               <div class="col-sm-9">
-                <input type="date" id="date_of_visit" class="form-control @error('date_of_visit') is-invalid @enderror"
-                  name="date_of_visit" value="{{ old('date_of_visit') }}" autocomplete="off" onfocus="this.showPicker()"
-                  placeholder="Masukkan Asal Sekolah" />
+                <input type="date" id="date_of_visit"
+                  class="form-control form-control-sm @error('date_of_visit') is-invalid @enderror" name="date_of_visit"
+                  value="{{ old('date_of_visit') }}" autocomplete="off" onfocus="this.showPicker()" />
 
                 @error('date_of_visit')
                   <small class="text-danger">{{ $message }}</small>
@@ -106,18 +110,21 @@
                 <label for="program" class="form-label">Acara</label>
               </div>
               <div class="col-sm-9">
-                <select name="program_id" class="form-select" id="program">
+                <select name="program_id" class="form-control form-control-sm @error('program_id') is-invalid @enderror"
+                  id="program">
                   <option value="" selected>-- Pilih Acara --</option>
                   @foreach ($program as $row)
-                    <option value="{{ $row->id }}">{{ $row->program_name }}</option>
+                    <option value="{{ $row->id }}" {{ old('program_id') == $row->id ? 'selected' : '' }}>
+                      {{ $row->program_name }}
+                    </option>
                   @endforeach
                 </select>
-
                 @error('program_id')
                   <small class="text-danger">{{ $message }}</small>
                 @enderror
               </div>
             </div>
+
 
             <div class="row">
               <div class="col-6">

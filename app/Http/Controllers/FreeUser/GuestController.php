@@ -99,7 +99,7 @@ class GuestController extends Controller
 		$guest = Guest::findOrFail($id);
 
 		$pdf = Pdf::loadView('free_user.tamu.pdf', ['guest' => $guest]);
-		return $pdf->download($guest->name . ' - ID Card.pdf');
+		return $pdf->stream($guest->name . ' - ID Card.pdf');
 	}
 
 	public function finished(Request $request)

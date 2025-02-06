@@ -57,9 +57,10 @@
         </p>
         <div class="d-flex mt-4 gap-3 flex-column flex-md-row justify-content-center" data-aos="fade-up"
           data-aos-delay="300">
-          <a href="{{ route('narasumber') }}" class="btn btn-lg btn-primary w-100 w-md-auto">Narasumber</a>
-          <a href="{{ route('magang') }}" class="btn btn-lg btn-danger w-100 w-md-auto">Magang</a>
-          <a href="{{ route('tamu') }}" class="btn btn-lg btn-secondary w-100 w-md-auto">Tamu</a>
+          <a href="{{ route('narasumber') }}"
+            class="btn btn-lg btn-primary w-100 w-md-auto text-uppercase">Narasumber</a>
+          <a href="{{ route('magang') }}" class="btn btn-lg btn-danger w-100 w-md-auto text-uppercase">Magang</a>
+          <a href="{{ route('tamu') }}" class="btn btn-lg btn-secondary w-100 w-md-auto text-uppercase">Tamu</a>
         </div>
       </div>
     </section>

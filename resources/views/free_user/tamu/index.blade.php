@@ -10,11 +10,11 @@
           <div class="step" id="step1">
             <div class="row mb-3">
               <div class="col-sm-3">
-                <label for="name" class="form-label">Nama</label>
+                <label for="name" class="col-form-label-sm">Nama</label>
               </div>
               <div class="col-sm-9">
                 <input type="text" id="name" name="name"
-                  class="form-control @error('name') is-invalid @enderror" autocomplete="off" autofocus
+                  class="form-control-sm form-control @error('name') is-invalid @enderror" autocomplete="off" autofocus
                   placeholder="Masukkan Nama" value="{{ old('name') }}" />
                 @error('name')
                   <small class="text-danger">{{ $message }}</small>
@@ -24,32 +24,36 @@
 
             <div class="row mb-3">
               <div class="col-sm-3">
-                <label for="gender" class="form-label">Jenis Kelamin</label>
+                <label class="col-form-label-sm">Jenis Kelamin</label>
               </div>
-              <div class="col-sm-4">
-                <input type="radio" id="laki_laki" name="gender" value="laki_laki"
-                  class="form-check-input custom-radio @error('gender') is-invalid @enderror"
-                  {{ old('gender') == 'laki_laki' ? 'checked' : '' }} />
-                <label for="laki_laki" class="form-check-label">Laki-laki</label> <br>
+              <div class="col-sm-9">
+                <div class="d-flex align-items-center">
+                  <div class="form-check form-check-inline">
+                    <input type="radio" id="laki_laki" name="gender" value="laki_laki"
+                      class="form-check-input custom-radio @error('gender') is-invalid @enderror"
+                      {{ old('gender') == 'laki_laki' ? 'checked' : '' }} />
+                    <label for="laki_laki" class="form-check-label col-form-label-sm">Laki-laki</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input type="radio" id="perempuan" name="gender" value="perempuan"
+                      class="form-check-input custom-radio @error('gender') is-invalid @enderror"
+                      {{ old('gender') == 'perempuan' ? 'checked' : '' }} />
+                    <label for="perempuan" class="form-check-label col-form-label-sm">Perempuan</label>
+                  </div>
+                </div>
                 @error('gender')
-                  <small class="text-danger">{{ $message }}</small>
+                  <small class="text-danger mt-1 w-100">{{ $message }}</small>
                 @enderror
-              </div>
-              <div class="col-sm-4">
-                <input type="radio" id="perempuan" name="gender" value="perempuan"
-                  class="form-check-input custom-radio @error('gender') is-invalid @enderror"
-                  {{ old('gender') == 'perempuan' ? 'checked' : '' }} />
-                <label for="perempuan" class="form-check-label">Perempuan</label>
               </div>
             </div>
 
             <div class="row mb-3">
               <div class="col-sm-3">
-                <label for="origin" class="form-label">Asal</label>
+                <label for="origin" class="col-form-label-sm">Asal</label>
               </div>
               <div class="col-sm-9">
                 <input type="text" id="origin" name="origin"
-                  class="form-control @error('origin') is-invalid @enderror" autocomplete="off" autofocus
+                  class="form-control-sm form-control @error('origin') is-invalid @enderror" autocomplete="off" autofocus
                   placeholder="Masukkan Asal" value="{{ old('origin') }}" />
                 @error('origin')
                   <small class="text-danger">{{ $message }}</small>
@@ -59,12 +63,12 @@
 
             <div class="row mb-3">
               <div class="col-sm-3">
-                <label for="phone_number" class="form-label">Nomor HP</label>
+                <label for="phone_number" class="col-form-label-sm">Nomor HP</label>
               </div>
               <div class="col-sm-9">
                 <input type="text" inputmode="numeric" id="phone_number"
-                  class="form-control @error('phone_number') is-invalid @enderror" autocomplete="off" name="phone_number"
-                  value="{{ old('phone_number') }}" placeholder="Masukkan Nomor HP" />
+                  class="form-control-sm form-control @error('phone_number') is-invalid @enderror" autocomplete="off"
+                  name="phone_number" value="{{ old('phone_number') }}" placeholder="Masukkan Nomor HP" />
 
                 @error('phone_number')
                   <small class="text-danger">{{ $message }}</small>
@@ -74,11 +78,11 @@
 
             <div class="row mb-3">
               <div class="col-sm-3">
-                <label for="email" class="form-label">Email</label>
+                <label for="email" class="col-form-label-sm">Email</label>
               </div>
               <div class="col-sm-9">
                 <input type="email" id="email" name="email"
-                  class="form-control @error('email') is-invalid @enderror" autocomplete="off"
+                  class="form-control-sm form-control @error('email') is-invalid @enderror" autocomplete="off"
                   placeholder="Masukkan Email" value="{{ old('email') }}" />
                 @error('email')
                   <small class="text-danger">{{ $message }}</small>
@@ -88,11 +92,12 @@
 
             <div class="row mb-3">
               <div class="col-sm-3">
-                <label for="objectives" class="form-label">Tujuan/Kepentingan</label>
+                <label for="objectives" class="col-form-label-sm">Tujuan/Kepentingan</label>
               </div>
               <div class="col-sm-9">
-                <textarea id="objectives" name="objectives" class="form-control @error('objectives') is-invalid @enderror"
-                  autocomplete="off" placeholder="Masukkan Tujuan/Kepentingan" rows="3">{{ old('objectives') }}</textarea>
+                <textarea id="objectives" name="objectives"
+                  class="form-control-sm form-control @error('objectives') is-invalid @enderror" autocomplete="off"
+                  placeholder="Masukkan Tujuan/Kepentingan" rows="3">{{ old('objectives') }}</textarea>
                 @error('objectives')
                   <small class="text-danger">{{ $message }}</small>
                 @enderror

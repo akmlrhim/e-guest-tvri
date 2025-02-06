@@ -100,7 +100,7 @@ class InternController extends Controller
 	{
 		$intern = Intern::findOrFail($id);
 		$pdf = Pdf::loadView('free_user.magang.pdf', ['intern' => $intern]);
-		return $pdf->download($intern->name . ' - ID Card.pdf');
+		return $pdf->stream($intern->name . ' - ID Card.pdf');
 	}
 
 	public function sendToEmail($id)

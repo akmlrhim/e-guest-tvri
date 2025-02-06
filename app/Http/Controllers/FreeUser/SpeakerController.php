@@ -87,7 +87,7 @@ class SpeakerController extends Controller
 		$speaker = Speaker::findOrFail($id);
 
 		$pdf = Pdf::loadView('free_user.narasumber.pdf', ['speaker' => $speaker]);
-		return $pdf->download($speaker->name . ' - ID Card.pdf');
+		return $pdf->stream($speaker->name . ' - ID Card.pdf');
 	}
 
 	public function sendToEmail($id)

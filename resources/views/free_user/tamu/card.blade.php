@@ -9,8 +9,8 @@
           class="mx-auto img-thumbnail d-block mb-3" style="width: 240px; height: 300px; object-fit: cover;">
         <div class="row">
           <div class="col-4">
-            <a href="{{ route('tamu.id.card.print', ['id' => $guest->id]) }}" class="btn btn-success w-100"><i
-                class="fas fa-print"></i>&nbsp; Cetak
+            <a href="{{ route('tamu.id.card.print', ['id' => $guest->id]) }}" target="_blank"
+              class="btn btn-success w-100"><i class="fas fa-print"></i>&nbsp; Cetak
               Kartu</a>
           </div>
           <div class="col-4">
