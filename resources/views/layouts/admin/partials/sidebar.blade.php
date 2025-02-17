@@ -12,14 +12,16 @@
       <li class="nav-item">
         <a href="{{ route('acara') }}" class="nav-link">
           <i class="nav-icon fas fa-calendar-check"></i>
-          <p>Acara</p>
+          <p>Acara
+            <span class="right badge badge-success">Master</span>
+          </p>
         </a>
       </li>
 
       <li class="nav-item">
         <a href="{{ route('admin.tamu') }}" class="nav-link">
           <i class="nav-icon fas fa-users"></i>
-          <p>Tamu</p>
+          <p>Tamu </p>
         </a>
       </li>
 
@@ -34,6 +36,15 @@
         <a href="{{ route('admin.magang') }}" class="nav-link">
           <i class="nav-icon fas fa-school"></i>
           <p>Magang</p>
+        </a>
+      </li>
+
+      <li class="nav-header text-secondary">Tambahan</li>
+
+      <li class="nav-item">
+        <a href="{{ route('theme.index') }}" class="nav-link">
+          <i class="nav-icon fas fa-palette"></i>
+          <p>Home Settings</p>
         </a>
       </li>
 

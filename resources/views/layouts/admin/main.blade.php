@@ -59,7 +59,6 @@
 
     </div>
 
-    @include('layouts.admin.partials.footer')
   </div>
 
   <script src="{{ asset('admin_assets/js/jquery.min.js') }}"></script>
