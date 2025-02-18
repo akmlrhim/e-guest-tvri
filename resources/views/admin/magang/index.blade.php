@@ -8,12 +8,31 @@
       <div class="card">
         <div class="card-body">
 
-          <div class="mb-3">
-            <label for="sortOrder" class="mr-2">Urutkan:</label>
-            <select id="sortOrder" class="form-control form-control-sm d-inline-block w-auto">
-              <option value="desc">DESC</option>
-              <option value="asc">ASC</option>
-            </select>
+          <div class="row mb-4">
+            <div class="col-md-3 col-12 d-flex align-items-center mb-2 mb-md-0">
+              <label for="sortOrder" class="mb-0 mr-3">Urutkan:</label>
+              <select id="sortOrder" class="form-control form-control-sm w-100">
+                <option value="desc">Terbaru (DESC)</option>
+                <option value="asc">Terlama (ASC)</option>
+              </select>
+            </div>
+            <div class="col-md-1 d-none d-md-block"></div>
+            <div
+              class="col-md-5 col-12 d-flex align-items-center justify-content-md-end justify-content-start mb-2 mb-md-0">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="far fa-calendar-alt"></i>
+                  </span>
+                </div>
+                <input type="text" id="dateRange" class="form-control form-control-sm float-right"
+                  placeholder="Pilih Rentang Tanggal" />
+              </div>
+            </div>
+            <div class="col-md-3 col-12 d-flex align-items-center justify-content-md-end justify-content-start">
+              <button class="btn btn-sm btn-success w-100" data-toggle="modal" data-target="#cetakModal">Cetak
+                Data</button>
+            </div>
           </div>
 
           <div class="table-responsive-sm">
@@ -69,6 +88,37 @@
     </div>
   @endforeach
   {{-- end modal konfirmasi hapus --}}
+
+
+  {{-- modal cetak  --}}
+  <div class="modal fade" id="cetakModal" tabindex="-1" aria-labelledby="cetakModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cetakModalLabel">Cetak Peserta Magang</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="far fa-calendar-alt"></i>
+              </span>
+            </div>
+            <input type="text" id="modalDateRange" class="form-control form-control-sm float-right"
+              placeholder="Pilih Rentang Tanggal" />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+          <button type="button" id="printButton" class="btn btn-primary">Cetak Data</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{-- end modal cetak  --}}
 @endsection
 
 @section('script')
@@ -83,6 +133,11 @@
           url: "{{ route('admin.magang.show') }}",
           data: function(d) {
             d.sortOrder = $('#sortOrder').val();
+            let dateRange = $('#dateRange').val().split(' - ');
+            if (dateRange.length == 2) {
+              d.startDate = dateRange[0];
+              d.endDate = dateRange[1];
+            }
           }
         },
         order: [],
@@ -131,6 +186,60 @@
       $('#sortOrder').on('change', function() {
         table.ajax.reload();
       });
+
+      // filter date range 
+      $('#dateRange').daterangepicker({
+        autoUpdateInput: false,
+        locale: {
+          cancelLabel: 'Clear',
+          format: 'DD-MM-YYYY'
+        }
+      });
+
+      $('#dateRange').on('apply.daterangepicker', function(ev, picker) {
+        $(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
+        table.ajax.reload();
+      });
+
+      $('#dateRange').on('cancel.daterangepicker', function(ev, picker) {
+        $(this).val('');
+        table.ajax.reload();
+      });
+      //
+
+      // cetak modal 
+      $('#cetakModal').on('shown.bs.modal', function() {
+        $('#modalDateRange').daterangepicker({
+          autoUpdateInput: false,
+          locale: {
+            cancelLabel: 'Clear',
+            format: 'DD-MM-YYYY'
+          }
+        });
+
+        $('#modalDateRange').on('apply.daterangepicker', function(ev, picker) {
+          $(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
+        });
+
+        $('#modalDateRange').on('cancel.daterangepicker', function(ev, picker) {
+          $(this).val('');
+        });
+
+        $('#printButton').on('click', function() {
+          var dateRange = $('#modalDateRange').val().split(' - ');
+
+          if (dateRange.length === 2) {
+            var startDate = moment(dateRange[0], 'DD-MM-YYYY').format('YYYY-MM-DD');
+            var endDate = moment(dateRange[1], 'DD-MM-YYYY').format('YYYY-MM-DD');
+
+            window.location.href = "{{ route('admin.magang.cetak') }}?startDate=" + startDate + "&endDate=" +
+              endDate;
+          } else {
+            alert('Harap pilih rentang tanggal terlebih dahulu.');
+          }
+        });
+      });
+      //
     });
   </script>
 @endsection

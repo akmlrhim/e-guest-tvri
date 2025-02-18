@@ -32,6 +32,7 @@ Route::prefix('administrator')->group(function () {
 		Route::get('{id}/detail', [AdminInternController::class, 'detail'])->name('admin.magang.detail');
 		Route::put('{id}/update', [AdminInternController::class, 'update'])->name('admin.magang.update');
 		Route::delete('{id}/delete', [AdminInternController::class, 'destroy'])->name('admin.magang.destroy');
+		Route::get('print', [AdminInternController::class, 'print'])->name('admin.magang.cetak');
 	});
 
 	// tamu route 
@@ -42,6 +43,7 @@ Route::prefix('administrator')->group(function () {
 		Route::get('{id}/detail', [AdminGuestController::class, 'detail'])->name('admin.tamu.detail');
 		Route::put('{id}/update', [AdminGuestController::class, 'update'])->name('admin.tamu.update');
 		Route::delete('{id}/delete', [AdminGuestController::class, 'destroy'])->name('admin.tamu.destroy');
+		Route::get('print', [AdminGuestController::class, 'print'])->name('admin.tamu.cetak');
 	});
 
 	// route narasumber 

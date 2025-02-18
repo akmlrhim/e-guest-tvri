@@ -27,12 +27,12 @@
           <h6 class="mb-3">Logo</h6>
           <div class="mb-3 text-center">
             <div class="d-inline-block mr-4">
-              <small class="text-muted d-block mb-1">Original</small>
+              <h6 class="d-block mb-1">Original</h6>
               <img src="{{ asset('storage/logo/' . $theme->logo) }}" class="img-fluid rounded shadow bg-primary"
                 alt="Original Logo" style="max-height: 200px;">
             </div>
             <div class="d-inline-block">
-              <small class="text-muted d-block mb-1">Preview</small>
+              <h6 class="d-block mb-1">Preview</h6>
               <img id="logoPreview" src="{{ asset('img/default.jpg') }}" class="img-fluid rounded shadow bg-secondary"
                 alt="Edited Logo" style="max-height: 200px;">
             </div>
@@ -59,12 +59,12 @@
           <h6 class="mb-3">Background</h6>
           <div class="mb-3 text-center">
             <div class="d-inline-block mr-4">
-              <small class="text-muted d-block mb-1">Original</small>
+              <h6 class="d-block mb-1">Original</h6>
               <img src="{{ asset('storage/background/' . $theme->background_image) }}" class="img-fluid rounded shadow"
                 alt="Original Logo" style="max-height: 200px;">
             </div>
             <div class="d-inline-block mr-4">
-              <small class="text-muted d-block mb-1">Preview</small>
+              <h6 class="d-block mb-1">Preview</h6>
               <img id="backgroundPreview" src="{{ asset('img/default.jpg') }}" class="img-fluid rounded shadow"
                 alt="Background Preview" style="max-height: 200px;">
             </div>
@@ -86,9 +86,9 @@
           </form>
         </div>
       </div>
-
     </div>
   </div>
+
 @endsection
 
 @section('script')

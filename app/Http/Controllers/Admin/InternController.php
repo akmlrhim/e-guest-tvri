@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Intern;
 use Carbon\Carbon;
+use App\Models\Intern;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Yajra\DataTables\DataTables;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class InternController extends Controller
 {
@@ -22,8 +23,16 @@ class InternController extends Controller
 	{
 		$builder = Intern::select('id', 'name', 'gender', 'institution', 'start', 'end', 'created_at');
 
+		//sort terbaru atau terlama
 		$sortOrder = $request->input('sortOrder', 'desc');
 		$builder->orderBy('created_at', $sortOrder);
+
+		// filter berdasarkan rentang waktu 
+		if ($request->has('startDate') && $request->has('endDate')) {
+			$startDate = Carbon::parse($request->startDate)->startOfDay();
+			$endDate = Carbon::parse($request->endDate)->endOfDay();
+			$builder->whereBetween('created_at', [$startDate, $endDate]);
+		}
 
 		return DataTables::of($builder)
 			->addIndexColumn()
@@ -113,5 +122,28 @@ class InternController extends Controller
 		$intern->delete();
 		toast('Data berhasil dihapus', 'success');
 		return redirect()->route('admin.magang');
+	}
+
+	public function print(Request $request)
+	{
+		$request->validate([
+			'startDate' => 'required|date',
+			'endDate' => 'required|date',
+		]);
+
+		$startDate = Carbon::parse($request->input('startDate'))->startOfDay()->format('Y-m-d');
+		$endDate = Carbon::parse($request->input('endDate'))->endOfDay()->format('Y-m-d');
+
+		$interns = Intern::whereBetween('created_at', [$startDate, $endDate])
+			->orderBy('created_at', 'desc')
+			->get();
+
+		$pdf = Pdf::loadView('admin.magang.report', [
+			'interns' => $interns,
+			'startDate' => $startDate,
+			'endDate' => $endDate
+		]);
+
+		return $pdf->download('Data Magang ' . $startDate . ' - ' . $endDate . '.pdf');
 	}
 }

@@ -7,6 +7,7 @@ use App\Models\Guest;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Storage;
 
 class GuestController extends Controller
@@ -22,8 +23,16 @@ class GuestController extends Controller
 	{
 		$builder = Guest::select('id', 'name', 'gender', 'origin', 'objectives', 'email', 'phone_number', 'created_at');
 
+		// mengurutkan terbaru atau terlama
 		$sortOrder = $request->input('sortOrder', 'desc');
 		$builder->orderBy('created_at', $sortOrder);
+
+		// filter berdasarkan rentang waktu 
+		if ($request->has('startDate') && $request->has('endDate')) {
+			$startDate = Carbon::parse($request->startDate)->startOfDay();
+			$endDate = Carbon::parse($request->endDate)->endOfDay();
+			$builder->whereBetween('created_at', [$startDate, $endDate]);
+		}
 
 		return DataTables::of($builder)
 			->addIndexColumn()
@@ -86,5 +95,28 @@ class GuestController extends Controller
 		$guest->delete();
 		toast('Data berhasil dihapus', 'success');
 		return redirect()->route('admin.tamu');
+	}
+
+	public function print(Request $request)
+	{
+		$request->validate([
+			'startDate' => 'required|date',
+			'endDate' => 'required|date',
+		]);
+
+		$startDate = Carbon::parse($request->input('startDate'))->startOfDay()->format('Y-m-d');
+		$endDate = Carbon::parse($request->input('endDate'))->endOfDay()->format('Y-m-d');
+
+		$guests = Guest::whereBetween('created_at', [$startDate, $endDate])
+			->orderBy('created_at', 'desc')
+			->get();
+
+		$pdf = Pdf::loadView('admin.tamu.report', [
+			'guests' => $guests,
+			'startDate' => $startDate,
+			'endDate' => $endDate
+		]);
+
+		return $pdf->download('Data Tamu ' . $startDate . ' - ' . $endDate . '.pdf');
 	}
 }
