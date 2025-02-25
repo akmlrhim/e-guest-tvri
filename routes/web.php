@@ -8,12 +8,12 @@ use App\Http\Controllers\FreeUser\GuestController;
 use App\Http\Controllers\FreeUser\InternController;
 use App\Http\Controllers\Admin\ProgramController;
 use App\Http\Controllers\Admin\SpeakerController as AdminSpeakerController;
+use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\FreeUser\SpeakerController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-	return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('administrator')->group(function () {
 	// Route autentikasi
@@ -32,6 +32,7 @@ Route::prefix('administrator')->group(function () {
 		Route::get('{id}/detail', [AdminInternController::class, 'detail'])->name('admin.magang.detail');
 		Route::put('{id}/update', [AdminInternController::class, 'update'])->name('admin.magang.update');
 		Route::delete('{id}/delete', [AdminInternController::class, 'destroy'])->name('admin.magang.destroy');
+		Route::get('print', [AdminInternController::class, 'print'])->name('admin.magang.cetak');
 	});
 
 	// tamu route 
@@ -42,6 +43,7 @@ Route::prefix('administrator')->group(function () {
 		Route::get('{id}/detail', [AdminGuestController::class, 'detail'])->name('admin.tamu.detail');
 		Route::put('{id}/update', [AdminGuestController::class, 'update'])->name('admin.tamu.update');
 		Route::delete('{id}/delete', [AdminGuestController::class, 'destroy'])->name('admin.tamu.destroy');
+		Route::get('print', [AdminGuestController::class, 'print'])->name('admin.tamu.cetak');
 	});
 
 	// route narasumber 
@@ -62,6 +64,13 @@ Route::prefix('administrator')->group(function () {
 		Route::get('{id}/edit', [ProgramController::class, 'edit'])->name('acara.edit');
 		Route::put('{id}/update', [ProgramController::class, 'update'])->name('acara.update');
 		Route::delete('{id}/delete', [ProgramController::class, 'destroy'])->name('acara.destroy');
+	});
+
+	Route::prefix('home-settings')->group(function () {
+		Route::get('/', [ThemeController::class, 'index'])->name('theme.index');
+		Route::get('edit/{id}', [ThemeController::class, 'edit'])->name('theme.edit');
+		Route::patch('logo/{id}', [ThemeController::class, "updateLogo"])->name('theme.logo');
+		Route::patch('background/{id}', [ThemeController::class, "updateBackground"])->name('theme.background');
 	});
 });
 

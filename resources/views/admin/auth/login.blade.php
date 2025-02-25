@@ -13,6 +13,13 @@
   <link rel="stylesheet" href="{{ asset('style.css') }}">
   <link rel="stylesheet" href="{{ asset('admin_assets/css/bootstrap.min.css') }}">
 
+  <style>
+    html,
+    body {
+      overflow: hidden;
+    }
+  </style>
+
 </head>
 
 <body style="background-image: url('{{ asset('img/login_bg_2.jpg') }}'); background-size: cover"

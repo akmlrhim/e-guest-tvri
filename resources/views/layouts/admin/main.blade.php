@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="{{ asset('fontawesome-free/css/all.min.css') }}">
   <link rel="stylesheet" href="{{ asset('style.css') }}">
   <link rel="stylesheet" href="{{ asset('admin_assets/css/adminlte.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('admin_assets/plugins/daterangepicker/daterangepicker.css') }}">
   <link rel="stylesheet" href="{{ asset('admin_assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
   <link rel="stylesheet"
     href="{{ asset('admin_assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
@@ -53,13 +54,15 @@
         </div>
       </div>
 
-      @include('sweetalert::alert')
+      <div class="text-xs">
+        @include('sweetalert::alert')
+      </div>
+
 
       @yield('content')
 
     </div>
 
-    @include('layouts.admin.partials.footer')
   </div>
 
   <script src="{{ asset('admin_assets/js/jquery.min.js') }}"></script>
@@ -67,6 +70,9 @@
   <script src="{{ asset('admin_assets/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('admin_assets/js/adminlte.min.js') }}"></script>
 
+
+  <script src="{{ asset('admin_assets/plugins/moment/moment.min.js') }}"></script>
+  <script src="{{ asset('admin_assets/plugins/daterangepicker/daterangepicker.js') }}"></script>
   <script src="{{ asset('admin_assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('admin_assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
   <script src="{{ asset('admin_assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>TVRI e-Guest</title>
+  <title>TVRI e-Guest | {{ $title }}</title>
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link href="{{ asset('img/eguest_kalsel.png') }}" rel="icon">
   <link href="{{ asset('img/eguest_kalsel.png') }}" rel="apple-touch-icon">
@@ -15,13 +15,18 @@
 
   <link href="{{ asset('free_user_assets/assets/css/main.css') }}" rel="stylesheet">
 
-  <!-- <style>
+  <style>
+  html,
+  body {
+    overflow: hidden;
+  }
+
   @media (max-width: 768px) {
     .d-flex.mt-4 {
       flex-direction: column;
     }
   }
-  </style> -->
+  </style>
 </head>
 
 <body class="index-page">
@@ -29,23 +34,27 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-lg position-relative d-flex align-items-center">
 
-      <a href="/" class="logo d-flex align-items-center me-auto">
-        <h1 class="sitename">TVRI e-Guest</h1>
-      </a>
+      <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto">
+        <img src="{{ $theme->logo ? asset('storage/logo/' . $theme->logo) : asset('img/eguest_kalsel.png') }}"
+          alt="Logo TVRI" class="me-2" style="height: 40px;">
+        <h1 class="sitename mb-0">TVRI e-Guest</h1>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="#" data-bs-toggle="modal" data-bs-target="#creditModal">Credit</a></li>
-          <li><a href="{{ route('login') }}">Admin</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-lg-none fas fa-bars "></i>
-      </nav>
+
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="" data-bs-toggle="modal" data-bs-target="#creditModal">Credit</a></li>
+            <li><a href="{{ route('login') }}">Admin</a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-lg-none fas fa-bars "></i>
+        </nav>
     </div>
   </header>
 
   <main class="main">
     <section class="hero section dark-background">
-      <img src="{{ asset('img/login_bg_2.jpg') }}" alt="" data-aos="fade-in">
+      <img
+        src="{{ $theme->background_image ? asset('storage/background/' . $theme->background_image) : asset('img/login_bg_2.jpg') }}"
+        alt="{{ $theme->background_image }}" />
 
       @include('sweetalert::alert')
       <div class="container d-flex flex-column align-items-center text-center">
@@ -67,6 +76,7 @@
 
   </main>
 
+  {{-- modal  --}}
   <!-- Modal -->
   <div class="modal fade text-center" id="creditModal" tabindex="-1" aria-labelledby="creditModalLabel"
     aria-hidden="true">
@@ -132,8 +142,6 @@
 
   <script src="{{ asset('free_user_assets/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('free_user_assets/assets/vendor/aos/aos.js') }}"></script>
-  <script src="{{ asset('free_user_assets/assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
-  <script src="{{ asset('free_user_assets/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
 
   <script src="{{ asset('free_user_assets/assets/js/main.js') }}"></script>
 

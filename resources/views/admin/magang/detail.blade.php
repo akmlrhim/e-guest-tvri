@@ -49,7 +49,7 @@
             </div>
             <div class="col-sm-9">
               <input class="form-control form-control-sm" disabled
-                value="{{ \Carbon\Carbon::parse($intern->start_date)->locale('id')->translatedFormat('d F Y') }} - {{ \Carbon\Carbon::parse($intern->end_date)->locale('id')->translatedFormat('d F Y') }}" />
+                value="{{ \Carbon\Carbon::parse($intern->start)->locale('id')->translatedFormat('d F Y') }} - {{ \Carbon\Carbon::parse($intern->end)->locale('id')->translatedFormat('d F Y') }}" />
             </div>
           </div>
 
