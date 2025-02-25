@@ -31,7 +31,6 @@
       padding: 8px;
       text-align: left;
       word-wrap: break-word;
-      /* Membungkus teks jika terlalu panjang */
     }
 
     h1 {

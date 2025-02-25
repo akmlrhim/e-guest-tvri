@@ -142,7 +142,7 @@ class InternController extends Controller
 			'interns' => $interns,
 			'startDate' => $startDate,
 			'endDate' => $endDate
-		]);
+		])->setPaper('a4', 'landscape');
 
 		return $pdf->download('Data Magang ' . $startDate . ' - ' . $endDate . '.pdf');
 	}

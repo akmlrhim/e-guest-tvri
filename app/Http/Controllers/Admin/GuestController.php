@@ -19,8 +19,10 @@ class GuestController extends Controller
 		return view('admin.tamu.index', compact('title', 'guest'));
 	}
 
+	// server side untuk menampilkan data tamu menggunakan AJAX
 	public function show(Request $request)
 	{
+		// memilih kolom yang ada di dalam tabel tamu (guest)
 		$builder = Guest::select('id', 'name', 'gender', 'origin', 'objectives', 'email', 'phone_number', 'created_at');
 
 		// mengurutkan terbaru atau terlama
@@ -34,29 +36,31 @@ class GuestController extends Controller
 			$builder->whereBetween('created_at', [$startDate, $endDate]);
 		}
 
+		// pengambilan data menggunakan datatable
 		return DataTables::of($builder)
-			->addIndexColumn()
+			->addIndexColumn() // penomoran
 			->addColumn('gender', function ($row) {
 				return $row->gender == 'laki_laki' ? 'Laki-laki' : 'Perempuan';
-			})
+			}) //format jenis kelamin
 			->addColumn('action', function ($row) {
 				return '<a href="' . route('admin.tamu.edit', $row->id) . '" class="btn btn-warning btn-sm">Edit</a>
 								<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal' . $row->id . '">
 									Hapus
-								</button>';
+								</button>'; //tombol aksi untuk edit dan hapus
 			})
-			->rawColumns(['action'])
+			->rawColumns(['action']) // menambahkan kolom aksi tadi ke kolom
 			->make(true);
 	}
 
 	public function edit($id)
 	{
 		$title = 'Edit Tamu';
-		$guest = Guest::findOrFail($id);
-		return view('admin.tamu.edit', compact('title', 'guest'));
+		$guest = Guest::findOrFail($id); // findOrFail berfungsi untuk men throw error jika data tidak ditemukan
+		return view('admin.tamu.edit', compact('title', 'guest')); // compact : melempar variabel ke views
 	}
 
 	public function update(Request $request, $id)
+	// request untuk mengirimkan permintaan ke server / db, id untuk mengambil data berdasarkan id yang diambil
 	{
 		$request->validate([
 			'name' => 'required',

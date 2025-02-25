@@ -1,11 +1,11 @@
-@import url("https://cdn.rawgit.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59/raw/856f1dbb8d807aabceb80b6d4f94b464df461b3e/gotham.css");
+/* @import url("https://cdn.rawgit.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59/raw/856f1dbb8d807aabceb80b6d4f94b464df461b3e/gotham.css"); */
 
-/* @import url("https://db.onlinewebfonts.com/c/7dd5f4bf5d38875ca1822a830b6e6fe4?family=Aptos"); */
+@import url("https://db.onlinewebfonts.com/c/7dd5f4bf5d38875ca1822a830b6e6fe4?family=Aptos");
 
 /* @import url("https://fonts.cdnfonts.com/css/avenir"); */
 
 * {
-  font-family: "GothamPro", "system-ui", sans-serif;
+  font-family: "Aptos", "system-ui", sans-serif;
 }
 
 .custom-radio {
