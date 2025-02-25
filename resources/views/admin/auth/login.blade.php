@@ -12,73 +12,62 @@
   <link rel="stylesheet" href="{{ asset('admin_assets/css/adminlte.min.css') }}">
   <link rel="stylesheet" href="{{ asset('style.css') }}">
   <link rel="stylesheet" href="{{ asset('admin_assets/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('admin_assets/css/login.css') }}">
 
   <style>
-    html,
+  /* html,
     body {
       overflow: hidden;
-    }
+    } */
   </style>
 
 </head>
 
-<body style="background-image: url('{{ asset('img/login_bg_2.jpg') }}'); background-size: cover"
-  class="login-page hold-transition">
+<body>
+  <div id="card">
+    <div class="navItems">
+      <ul>
+        <li>Login</li>
+      </ul>
+    </div>
+    <div class="content">
+      <!-- Login Form -->
+      <form action="{{ route('login.process') }}" method="POST">
+        @csrf
 
-  @include('sweetalert::alert')
+        <!-- Username Field -->
+        <label for="username" autofocus>Username</label>
+        <input type="text" name="username" placeholder="Masukkan Username" value="{{ old('username') }}"
+          class="form-control @error('username') is-invalid @enderror" />
 
-  <div class="login-box">
-    <div class="card card-outline card-primary shadow">
-      <div class="card-header bg-primary text-center">
-        <img src="{{ asset('img/eguest_kalsel.png') }}" class="img-fluid" style="width: 50%" alt="">
-      </div>
-      <div class="card-body ">
-        <p class="login-box-msg font-weight-bold">Sign in to start your session</p>
+        @error('username')
+        <div class="invalid-feedback d-block">
+          {{ $message }}
+        </div>
+        @enderror
 
-        <form action="{{ route('login.process') }}" method="POST">
-          @csrf
-          <div class="input-group mb-3">
-            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email"
-              placeholder="Email" autocomplete="off" autofocus>
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-envelope"></span>
-              </div>
-            </div>
-            @error('email')
-              <div class="invalid-feedback d-block">
-                {{ $message }}
-              </div>
-            @enderror
-          </div>
+        <!-- Password Field -->
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="********"
+          class="form-control @error('password') is-invalid @enderror" />
 
-          <div class="input-group mb-3">
-            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password"
-              placeholder="Password">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-lock"></span>
-              </div>
-            </div>
-            @error('password')
-              <div class="invalid-feedback d-block">
-                {{ $message }}
-              </div>
-            @enderror
-          </div>
+        @error('password')
+        <div class="invalid-feedback d-block">
+          {{ $message }}
+        </div>
+        @enderror
 
-          <div class="row">
-            <div class="col-6">
-              <a href="/" class="btn text-primary">Kembali</a>
-            </div>
+        <!-- Sign in Button -->
+        <button type="submit" class="btn btn-primary btn-block">Log in</button>
+      </form>
+    </div>
 
-            <div class="col-6">
-              <button type="submit" class="btn btn-primary btn-block">Login</button>
-            </div>
-          </div>
-        </form>
-      </div>
+    <div class="footer">
+      <p>Forgot Password?</p>
     </div>
   </div>
+
+  <div class="clear"></div>
+</body>
 
 </html>
