@@ -24,6 +24,9 @@
 </head>
 
 <body>
+
+  @include('sweetalert::alert')
+
   <div id="card">
     <div class="navItems">
       <ul>
@@ -36,11 +39,11 @@
         @csrf
 
         <!-- Username Field -->
-        <label for="username" autofocus>Username</label>
-        <input type="text" name="username" placeholder="Masukkan Username" value="{{ old('username') }}"
+        <label for="email" autofocus>Email</label>
+        <input type="email" name="email" placeholder="Masukkan Email" value="{{ old('email') }}"
           class="form-control @error('username') is-invalid @enderror" />
 
-        @error('username')
+        @error('email')
         <div class="invalid-feedback d-block">
           {{ $message }}
         </div>
@@ -62,12 +65,13 @@
       </form>
     </div>
 
-    <div class="footer">
+    <!-- <div class="footer">
       <p>Forgot Password?</p>
-    </div>
+    </div> -->
   </div>
 
   <div class="clear"></div>
+
 </body>
 
 </html>
