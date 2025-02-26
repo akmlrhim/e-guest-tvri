@@ -57,7 +57,10 @@
       @include('sweetalert::alert')
       <div class="container d-flex flex-column align-items-center text-center">
         <h2 data-aos="fade-up" data-aos-delay="100">
-          SELAMAT DATANG DI TVRI KALIMANTAN SELATAN
+          SELAMAT DATANG
+        </h2>
+        <h2 data-aos="fade-up" data-aos-delay="100">
+          DI TVRI KALIMANTAN SELATAN
         </h2>
         <p data-aos="fade-up" data-aos-delay="200">
           Silahkan pilih menu di bawah ini
