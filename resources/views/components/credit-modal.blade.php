@@ -21,7 +21,7 @@
           <div class="card mb-3">
             <div class="card-body">
               <h5>System Analyst</h5>
-              Akbar Laksana, Insyamasrizal
+              Insyamasrizal,Akbar Laksana
             </div>
           </div>
           <div class="card mb-3">
@@ -49,9 +49,11 @@
             </div>
           </div>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer d-flex justify-content-between">
+          <a href="#" class="btn btn-sm text-muted btn-light ">&copy; E-Guest TVRI Kalimantan Selatan 2025</a>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
+
       </div>
     </div>
   </div>

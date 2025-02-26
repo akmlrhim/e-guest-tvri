@@ -34,7 +34,6 @@
     td {
       border: 1px solid #000;
       text-align: center;
-      /* Center align text in table cells */
     }
 
     th,
@@ -80,11 +79,11 @@
           <td>{{ $intern->gender == 'laki_laki' ? 'Laki-Laki' : 'Perempuan' }}</td>
           <td>{{ $intern->institution }}</td>
           <td>{{ $intern->birthplace }},
-            {{ \Carbon\Carbon::parse($intern->date_of_birth)->locale('id')->transletedFormat('d F Y') }}
+            {{ \Carbon\Carbon::parse($intern->date_of_birth)->locale('id')->format('d F Y') }}
           </td>
           <td>
-            {{ \Carbon\Carbon::parse($intern->start)->locale('id')->translatedFormat('d F Y') }} -
-            {{ \Carbon\Carbon::parse($intern->end)->locale('id')->translatedFormat('d F Y') }}
+            {{ \Carbon\Carbon::parse($intern->start)->locale('id')->format('d F Y') }} -
+            {{ \Carbon\Carbon::parse($intern->end)->locale('id')->format('d F Y') }}
             ({{ round(\Carbon\Carbon::parse($intern->start)->diffInMonths(\Carbon\Carbon::parse($intern->end))) }}
             bulan)
           </td>
