@@ -32,7 +32,7 @@
       position: relative;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       overflow: hidden;
-      background-image: url('{{ public_path('img/magang_card.png') }}');
+      background-image: url('{{ public_path('img/kartu_magang.png') }}');
       background-size: cover;
       background-position: center;
       border: 1px dashed #000000;
@@ -62,17 +62,28 @@
     }
 
     .details h3 {
-      color: white;
-      font-size: 34px;
+      font-size: 30px;
       text-transform: uppercase;
-      margin-bottom: 5px;
+      color: #ffffff;
+      margin-bottom: 10px;
     }
 
     .details h4 {
-      color: white;
       text-transform: uppercase;
-      font-size: 24px;
-      margin: 3px 0;
+      color: #ffffff;
+      font-size: 20px;
+      margin: 0;
+    }
+
+    .details .date {
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-top: 64px;
+      padding: 5px 10px;
+      font-size: 14px;
+      background: #1E3462;
+      display: inline-block;
+      border-radius: 5px;
     }
   </style>
 </head>
@@ -85,10 +96,14 @@
       </div>
       <div class="details">
         <h3>{{ $intern->name }}</h3>
-        <h4 style="margin-top: 36px">{{ $intern->institution }}</h4>
-        <h4 class="date" style="color: #1E3164; margin-top:33px; font-size:12px;">
-          {{ \Carbon\Carbon::parse($intern->start)->format('d-m-Y') }} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          {{ \Carbon\Carbon::parse($intern->end)->format('d-m-Y') }}</h4>
+        <h4>{{ $intern->institution }}</h4>
+        <h4 class="date">
+          DURASI MAGANG <br>
+          {{ \Carbon\Carbon::parse($intern->start)->format('d-m-Y') }}
+          &nbsp; - &nbsp;
+          {{ \Carbon\Carbon::parse($intern->end)->format('d-m-Y') }}
+        </h4>
+
       </div>
     </div>
   </div>

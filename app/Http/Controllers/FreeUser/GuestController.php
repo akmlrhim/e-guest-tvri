@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Guest;
 use Illuminate\Http\Request;
 use App\Mail\GuestIdCardMail;
+use App\Models\HomeTheme;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -15,8 +16,9 @@ class GuestController extends Controller
 {
 	public function index()
 	{
+		$bg = HomeTheme::latest()->first();
 		$title = 'Tamu';
-		return view('free_user.tamu.index', compact('title'));
+		return view('free_user.tamu.index', compact('title', 'bg'));
 	}
 
 	public function store(Request $request)
@@ -68,10 +70,11 @@ class GuestController extends Controller
 
 	public function card($id)
 	{
+		$bg = HomeTheme::latest()->first();
 		$title = 'ID Card';
 		$guest = Guest::findOrFail($id);
 
-		return view('free_user.tamu.card', compact('guest', 'title'));
+		return view('free_user.tamu.card', compact('guest', 'title', 'bg'));
 	}
 
 	public function sendToEmail($id)

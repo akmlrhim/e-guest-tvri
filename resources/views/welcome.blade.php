@@ -16,34 +16,32 @@
   <link href="{{ asset('free_user_assets/assets/css/main.css') }}" rel="stylesheet">
 
   <style>
-  html,
-  body {
-    overflow: hidden;
-  }
-
-  @media (max-width: 768px) {
-    .d-flex.mt-4 {
-      flex-direction: column;
+    html,
+    body {
+      overflow: hidden;
     }
-  }
+
+    @media (max-width: 768px) {
+      .d-flex.mt-4 {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 
-<body class="index-page">
+<body class="">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-lg position-relative d-flex align-items-center">
 
       <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto">
         <img src="{{ $theme->logo ? asset('storage/logo/' . $theme->logo) : asset('img/eguest_kalsel.png') }}"
-          alt="Logo TVRI" class="me-2" style="height: 40px;">
-        <h1 class="sitename mb-0">TVRI e-Guest</h1>
-
+          alt="Logo TVRI">
 
         <nav id="navmenu" class="navmenu">
           <ul>
             <li><a href="" data-bs-toggle="modal" data-bs-target="#creditModal">Credit</a></li>
-            <li><a href="{{ route('login') }}">Admin</a></li>
+            <li><a href="{{ route('login') }}">LOGIN</a></li>
           </ul>
           <i class="mobile-nav-toggle d-lg-none fas fa-bars "></i>
         </nav>
@@ -76,66 +74,7 @@
 
   </main>
 
-  {{-- modal  --}}
-  <!-- Modal -->
-  <div class="modal fade text-center" id="creditModal" tabindex="-1" aria-labelledby="creditModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="creditModalLabel">Credit</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="card mb-3">
-            <div class="card-body">
-              <h5>Executive Producer</h5>
-              Tuhan YME
-            </div>
-          </div>
-          <div class="card mb-3">
-            <div class="card-body">
-              <h5>Project Leader</h5>
-              This is some text within a card body.
-            </div>
-          </div>
-          <div class="card mb-3">
-            <div class="card-body">
-              <h5>System Analyst</h5>
-              This is some text within a card body.
-            </div>
-          </div>
-          <div class="card mb-3">
-            <div class="card-body">
-              <h5>Project Manager</h5>
-              Kamal Rahmi
-            </div>
-          </div>
-          <div class="card mb-3">
-            <div class="card-body">
-              <h5>Lead Programmer</h5>
-              Kamal Rahmi
-            </div>
-          </div>
-          <div class="card mb-3">
-            <div class="card-body">
-              <h5>Programmer</h5>
-              This is some text within a card body.
-            </div>
-          </div>
-          <div class="card mb-3">
-            <div class="card-body">
-              <h5>Interface Designer</h5>
-              This is some text within a card body.
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <x-credit-modal></x-credit-modal>
 
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="fas fa-arrow-up"></i></a>

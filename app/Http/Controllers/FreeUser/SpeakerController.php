@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\FreeUser;
 
-use App\Http\Controllers\Controller;
 use App\Models\Program;
 use App\Models\Speaker;
+use App\Models\HomeTheme;
 use Illuminate\Http\Request;
 use App\Mail\SpeakerIdCardMail;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
@@ -20,8 +21,9 @@ class SpeakerController extends Controller
 	public function index()
 	{
 		$title = 'Narasumber';
+		$bg = HomeTheme::latest()->first();
 		$program = Program::get();
-		return view('free_user.narasumber.index', compact('title', 'program'));
+		return view('free_user.narasumber.index', compact('title', 'program', 'bg'));
 	}
 
 	public function store(Request $request)
@@ -77,9 +79,10 @@ class SpeakerController extends Controller
 	public function card($id)
 	{
 		$title = 'ID Card';
+		$bg = HomeTheme::latest()->first();
 		$speaker = Speaker::findOrFail($id);
 
-		return view('free_user.narasumber.card', compact('speaker', 'title'));
+		return view('free_user.narasumber.card', compact('speaker', 'title', 'bg'));
 	}
 
 	public function printCard($id)

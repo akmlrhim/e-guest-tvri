@@ -35,7 +35,7 @@ class AuthController extends Controller
 		}
 
 		toast('Email atau password salah', 'error');
-		return redirect()->back();
+		return redirect()->back()->withInput($request->only('email'));
 	}
 
 	public function logout(Request $request)

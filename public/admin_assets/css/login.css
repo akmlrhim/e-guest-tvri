@@ -1,9 +1,19 @@
+@import url("https://cdn.rawgit.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59/raw/856f1dbb8d807aabceb80b6d4f94b464df461b3e/gotham.css");
+
 body {
-  background: linear-gradient(to bottom left, rgb(230, 230, 230), rgb(189, 189, 189));
+  background: linear-gradient(
+    to bottom left,
+    rgb(230, 230, 230),
+    rgb(189, 189, 189)
+  );
   width: 100%;
   min-height: 100vh;
   max-height: 100vh;
   overflow: hidden;
+}
+
+* {
+  font-family: "GothamPro", sans-serif;
 }
 
 .clear {
@@ -18,7 +28,12 @@ body {
   overflow: hidden;
   width: 400px;
   height: 500px;
-  background: linear-gradient(to bottom right, rgba(37, 49, 85, 0.9), rgba(45, 25, 62, 0.9)), url(https://images.unsplash.com/photo-1420819453217-57b6badd9e19?crop=entropy&fit=crop&fm=jpg&h=1325&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=2575);
+  background: linear-gradient(
+      to bottom right,
+      rgba(37, 49, 85, 0.9),
+      rgba(45, 25, 62, 0.9)
+    ),
+    url("../../img/gedung_tvri.jpg");
   background-size: cover;
   background-position: 30% center;
   margin-left: calc(50vw - 200px);
@@ -45,8 +60,8 @@ body {
   margin-left: 0px;
   padding-bottom: 5px;
   text-transform: uppercase;
-  color: rgba(204, 204, 204, 0.5);
-  font-family: 'Montserrat', sans-serif;
+  color: white;
+  font-family: "GothamPro", sans-serif;
   transition: all 1s;
   position: relative;
 }
@@ -112,7 +127,7 @@ body {
   border-radius: 20px;
   border: 0px solid transparent;
   padding: 10px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "GothamPro", sans-serif;
   font-size: 0.8rem;
   transition: all 0.5s;
 }
@@ -132,12 +147,12 @@ body {
   line-height: 1.5rem;
   font-size: 0.8rem;
   color: white;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "GothamPro", sans-serif;
   transition: all 0.5s;
 }
 
 #card .content input:focus {
-  background: rgba(221, 221, 221, 0.3); 
+  background: rgba(221, 221, 221, 0.3);
   border: 1px solid #1b66ea; /* Optional: Border on focus */
 }
 
@@ -158,22 +173,22 @@ body {
 }
 
 #card .content label {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "GothamPro", sans-serif;
   display: block;
   width: 70%; /* Ensure label width matches input */
   margin: 15px auto 10px;
-  color: rgba(204, 204, 204, 0.7); /* Slightly faded label color */
+  color: white; /* Slightly faded label color */
   font-size: 0.75rem;
   text-transform: uppercase;
 }
 
 /* Ensure error messages align properly */
 .invalid-feedback {
-  display: block; 
-  width: 70%; 
-  margin: 5px auto 0 auto; 
-  text-align: left; 
-  font-size: 0.75rem; 
+  display: block;
+  width: 70%;
+  margin: 5px auto 0 auto;
+  text-align: left;
+  font-size: 0.75rem;
   color: #f44336; /* Red color for error messages */
 }
 
@@ -188,7 +203,7 @@ body {
 }
 
 #card .footer p {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "GothamPro", sans-serif;
   text-align: center;
   cursor: pointer;
   color: rgba(204, 204, 204, 0.5);
@@ -202,4 +217,12 @@ body {
 
 li .login-text {
   text-align: center;
+}
+
+.invalid-feedback {
+  color: red;
+}
+
+.is-invalid {
+  border: red solid 1px !important;
 }

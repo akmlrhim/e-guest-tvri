@@ -16,7 +16,8 @@
 
 </head>
 
-<body class="p-4" style="background-image: url('{{ asset('img/login_bg_2.jpg') }}'); background-size: cover">
+<body class="p-4"
+  style="background-image: url('{{ $bg->background_image ? asset('storage/background/' . $bg->background_image) : asset('img/login_bg_2.jpg') }}'); background-size: cover">
 
   @yield('content')
 

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\FreeUser;
 
-use App\Http\Controllers\Controller;
 use App\Models\Intern;
+use App\Models\HomeTheme;
 use Illuminate\Http\Request;
 use App\Mail\InternIdCardMail;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
@@ -16,8 +17,9 @@ class InternController extends Controller
 
 	public function index()
 	{
+		$bg = HomeTheme::latest()->first();
 		$title = 'Magang';
-		return view('free_user.magang.index', compact('title'));
+		return view('free_user.magang.index', compact('title', 'bg'));
 	}
 
 	public function store(Request $request)
@@ -92,8 +94,9 @@ class InternController extends Controller
 	public function card($id)
 	{
 		$title = 'ID Card';
+		$bg = HomeTheme::latest()->first();
 		$intern = Intern::findOrFail($id);
-		return view('free_user.magang.card', compact('intern', 'title'));
+		return view('free_user.magang.card', compact('intern', 'title', 'bg'));
 	}
 
 	public function printCard($id)

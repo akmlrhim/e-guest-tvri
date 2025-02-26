@@ -8,20 +8,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>E-Guest TVRI | Login</title>
   <link rel="icon" type="image/png" href="{{ asset('img/eguest_kalsel.png') }}">
-  <link rel="stylesheet" href="{{ asset('fontawesome-free/css/all.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('admin_assets/css/adminlte.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('style.css') }}">
-  <link rel="stylesheet" href="{{ asset('admin_assets/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('admin_assets/css/login.css') }}">
 
-  <style>
-  /* html,
-    body {
-      overflow: hidden;
-    } */
-  </style>
-
 </head>
+
 
 <body>
 
@@ -40,13 +30,13 @@
 
         <!-- Username Field -->
         <label for="email" autofocus>Email</label>
-        <input type="email" name="email" placeholder="Masukkan Email" value="{{ old('email') }}"
-          class="form-control @error('username') is-invalid @enderror" />
+        <input type="email" name="email" placeholder="Masukkan Email" value="{{ old('email') }}" autocomplete="off"
+          class="form-control @error('email') is-invalid @enderror" />
 
         @error('email')
-        <div class="invalid-feedback d-block">
-          {{ $message }}
-        </div>
+          <div class="invalid-feedback d-block">
+            {{ $message }}
+          </div>
         @enderror
 
         <!-- Password Field -->
@@ -55,9 +45,9 @@
           class="form-control @error('password') is-invalid @enderror" />
 
         @error('password')
-        <div class="invalid-feedback d-block">
-          {{ $message }}
-        </div>
+          <div class="invalid-feedback d-block">
+            {{ $message }}
+          </div>
         @enderror
 
         <!-- Sign in Button -->
@@ -65,9 +55,12 @@
       </form>
     </div>
 
-    <!-- <div class="footer">
-      <p>Forgot Password?</p>
-    </div> -->
+
+    <div class="footer">
+      <p>&copy; E-Guest TVRI Kalimantan Selatan 2025</p>
+      <a href="{{ route('home') }}"
+        style="color: gray; font-size: 12px; text-decoration: none; justify-content: center">Kembali?</a>
+    </div>
   </div>
 
   <div class="clear"></div>
