@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
 {
@@ -30,7 +31,7 @@ class AuthController extends Controller
 		];
 
 		if (Auth::attempt($credentials)) {
-			toast('Berhasil login', 'success');
+			toast('Login Berhasil', 'success');
 			return redirect()->route('dashboard');
 		}
 

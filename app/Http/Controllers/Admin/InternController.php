@@ -9,6 +9,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Yajra\DataTables\DataTables;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class InternController extends Controller
 {
@@ -46,10 +47,10 @@ class InternController extends Controller
 				return Carbon::parse($row->end)->locale('id')->translatedFormat('d F Y');
 			})
 			->addColumn('action', function ($row) {
-				return '<a href="' . route('admin.magang.detail', $row->id) . '" class="btn btn-primary btn-sm">Detail</a>
-								<a href="' . route('admin.magang.edit', $row->id) . '" class="btn btn-warning btn-sm">Edit</a>
+				return '<a href="' . route('admin.magang.detail', $row->id) . '" class="btn btn-primary btn-sm"><i class="fas fa-info-circle"></i></a>
+								<a href="' . route('admin.magang.edit', $row->id) . '" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
 								<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal' . $row->id . '">
-									Hapus
+									<i class="fas fa-trash"></i>
 								</button>';
 			})
 			->rawColumns(['action'])
@@ -137,6 +138,11 @@ class InternController extends Controller
 		$interns = Intern::whereBetween('created_at', [$startDate, $endDate])
 			->orderBy('created_at', 'desc')
 			->get();
+
+		if ($interns->isEmpty()) {
+			toast('Tidak ada data magang dalam rentang tanggal yang dipilih.', 'warning');
+			return redirect()->back();
+		}
 
 		$pdf = Pdf::loadView('admin.magang.report', [
 			'interns' => $interns,

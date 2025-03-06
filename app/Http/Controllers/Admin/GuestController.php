@@ -115,6 +115,11 @@ class GuestController extends Controller
 			->orderBy('created_at', 'desc')
 			->get();
 
+		if ($guests->isEmpty()) {
+			toast('Tidak ada data tamu dalam rentang tanggal yang dipilih.', 'error');
+			return redirect()->back();
+		}
+
 		$pdf = Pdf::loadView('admin.tamu.report', [
 			'guests' => $guests,
 			'startDate' => $startDate,
